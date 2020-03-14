@@ -1,0 +1,21 @@
+body {
+  background-color: #2c2e43;
+  background-image: url("https://cdn.aarp.net/content/dam/aarp/home-and-family/caregiving/2013-09/1140-puerto-rico-protection-and-defense-resources-esp.imgcache.rev6a7fb3a708fcb71010f58bda7a8cdf18.web.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.card {
+  opacity: 1;
+  margin-top: 60px; 
+}
+
+.mat-toolbar {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.sidenav-menu {
+  color: black !important;
+}

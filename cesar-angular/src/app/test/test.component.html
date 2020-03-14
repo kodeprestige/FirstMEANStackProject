@@ -1,0 +1,17 @@
+<h2>Component of {{name}}</h2>
+<h3  
+	*ngIf="flag"
+		[style.background]="colorRed">
+		This is a {{typeTemplate}}
+</h3>
+
+<h3  
+	*ngIf="!flag"
+		[style.background]="'blue'">
+		This is a {{typeHome}}
+</h3>
+
+<h2>Types</h2>
+<ul>
+	<li *ngFor="let type of types">{{type}}</li>
+</ul>

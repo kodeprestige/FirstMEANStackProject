@@ -1,0 +1,18 @@
+<mat-nav-list>
+    <a mat-list-item href="http://conceptsineldercare.com/?page_id=103" target="_blnak">
+	    <mat-icon>perm_phone_msg</mat-icon>
+	    Contac Us
+	</a>
+	<a mat-list-item href="http://conceptsineldercare.com/?page_id=2" target="_blnak">
+	    <mat-icon>contacts</mat-icon>
+	    About us
+	</a>
+ 	<a mat-list-item [routerLink]="['/login']" *ngIf="!identity">
+ 		<mat-icon>account_circle</mat-icon>
+  		Log In
+	</a>
+	<a mat-list-item (click)="logout()" *ngIf="identity">
+ 		<mat-icon>exit_to_app</mat-icon>
+  		Log Out
+	</a>
+</mat-nav-list>

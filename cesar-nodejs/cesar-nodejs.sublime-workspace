@@ -1,0 +1,599 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ima",
+				"image"
+			],
+			[
+				"ni",
+				"nickOrEmail"
+			],
+			[
+				"un",
+				"undefined"
+			],
+			[
+				"p",
+				"params"
+			],
+			[
+				"path",
+				"path_file"
+			],
+			[
+				"ex",
+				"exists"
+			],
+			[
+				"im",
+				"image_file"
+			],
+			[
+				"file",
+				"file_name"
+			],
+			[
+				"fil",
+				"file_path"
+			],
+			[
+				"fi",
+				"file_path"
+			],
+			[
+				"file_",
+				"file_split"
+			],
+			[
+				"md",
+				"md_upload"
+			],
+			[
+				"user",
+				"users"
+			],
+			[
+				"v",
+				"validateData"
+			],
+			[
+				"u",
+				"user"
+			],
+			[
+				"se",
+				"select"
+			],
+			[
+				"e",
+				"email"
+			],
+			[
+				"pa",
+				"password"
+			],
+			[
+				"in",
+				"indexOf"
+			],
+			[
+				"con",
+				"contains"
+			],
+			[
+				"to",
+				"toLowerCase"
+			],
+			[
+				"lo",
+				"log"
+			],
+			[
+				"fin",
+				"findOne"
+			],
+			[
+				"up",
+				"update"
+			],
+			[
+				"find",
+				"findById"
+			],
+			[
+				"us",
+				"users"
+			],
+			[
+				"m",
+				"message"
+			],
+			[
+				"n",
+				"next"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"a",
+				"authorization"
+			],
+			[
+				"he",
+				"headers"
+			],
+			[
+				"s",
+				"status"
+			],
+			[
+				"i",
+				"image"
+			],
+			[
+				"if",
+				"ife\tif … else"
+			],
+			[
+				"b",
+				"bcrypt"
+			],
+			[
+				"id",
+				"id2Find"
+			],
+			[
+				"E",
+				"Email"
+			],
+			[
+				"l",
+				"length"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"f",
+				"findUser"
+			],
+			[
+				"fa",
+				"flag"
+			],
+			[
+				"U",
+				"userStored"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"User",
+				"UserSchema"
+			],
+			[
+				"Ac",
+				"ActivatedRoute\talias"
+			],
+			[
+				"str",
+				"string\tkeyword"
+			],
+			[
+				"tem",
+				"templateUrl\tproperty"
+			],
+			[
+				"c",
+				"component\tdirectory"
+			],
+			[
+				"th",
+				"this\tkeyword"
+			],
+			[
+				"mar",
+				"margin-top\tproperty"
+			],
+			[
+				"border",
+				"border-bottom\tproperty"
+			],
+			[
+				"fon",
+				"font-weight\tproperty"
+			],
+			[
+				"font",
+				"font-size\tproperty"
+			],
+			[
+				"pi",
+				"public\tkeyword"
+			],
+			[
+				"pr",
+				"private\tkeyword"
+			],
+			[
+				"impor",
+				"import\tkeyword"
+			],
+			[
+				"app",
+				"appRoutingProviders\talias"
+			],
+			[
+				"Com",
+				"Component\talias"
+			],
+			[
+				"border-r",
+				"border-radius\tproperty"
+			],
+			[
+				"ma",
+				"margin\tproperty"
+			],
+			[
+				"href",
+				"hreflang\tAttr"
+			],
+			[
+				"nav",
+				"navbar"
+			],
+			[
+				"const",
+				"constructor\tkeyword"
+			],
+			[
+				"imp",
+				"import\tkeyword"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "api/routes/user.js",
+			"settings":
+			{
+				"buffer_size": 864,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "api/services/jwt.js",
+			"settings":
+			{
+				"buffer_size": 501,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"inst",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/WebCesar/cesar-nodejs",
+		"/D/WebCesar/cesar-nodejs/api",
+		"/D/WebCesar/cesar-nodejs/api/controllers",
+		"/D/WebCesar/cesar-nodejs/api/routes",
+		"/D/WebCesar/cesar-nodejs/api/services",
+		"/D/WebCesar/cesar-nodejs/api/uploads"
+	],
+	"file_history":
+	[
+		"/D/WebCesar/cesar-nodejs/api/models/user.js",
+		"/D/WebCesar/cesar-nodejs/api/index.js",
+		"/D/WebCesar/cesar-nodejs/api/controllers/user.js",
+		"/D/WebCesar/cesar-nodejs/api/app.js",
+		"/D/WebCesar/cesar-nodejs/api/routes/user.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/uploads/users/xIBfRET2r77or6X22x4fsCG4.JPG",
+		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/controllers/user.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/models/user.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/middlewares/authenticated.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/services/jwt.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/routes/user.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/component/register/register.component.html",
+		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/package.json",
+		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/app.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/secret/secret.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/index.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/models/message.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/models/publication.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/models/follow.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/component/user-edit/user-edit.component.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/component/login/login.component.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/app.component.html",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/component/login/login.component.html",
+		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/package-lock.json",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/app.routing.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/component/user-edit/user-edit.component.html",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/app.module.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/component/home/home.component.html",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/component/home/home.component.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/component/home/home.components.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/models/user.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/component/register/register.component.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/app.component.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/assets/styles.css",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/models/message.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/models/follow.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/models/publication.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/node_modules/bootstrap/dist/css/bootstrap.css",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/node_modules/bootstrap/dist/css/bootstrap.min.css",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/node_modules/bootstrap/dist/css/bootstrap-theme.css",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/node_modules/@angular-devkit/build-optimizer/node_modules/typescript/lib/lib.esnext.full.d.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/node_modules/@angular/compiler-cli/node_modules/micromatch/lib/expand.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/package.json",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/test/test.component.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/test/test.component.html",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/angular.json",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/node_modules/@types/node/index.d.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/Test/test.component.html",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/e2e/protractor.conf.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/Test/test.component.ts",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/styles.css",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/index.html",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/app.component.css",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/karma.conf.js",
+		"/D/Web Proy/Cesar/Pulpa/cesar-angular/src/app/Test/test.ts"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			".then",
+			"console",
+			"con",
+			"return",
+			"toLowerCase",
+			"duplcateU",
+			"bg-primary",
+			"color01",
+			"background",
+			".navbar-dark",
+			".navbar",
+			"color",
+			".navbar-dark .navbar-toggler-icon",
+			"style",
+			"color01",
+			"color0",
+			"color",
+			">\n",
+			"/*!",
+			"dark",
+			"cyborg",
+			"jquery",
+			"nodejs",
+			"jquery",
+			"declare var module",
+			"interface nodemodule"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "api/routes/user.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 864,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"file": "api/uploads/users/0TaCTrKg3pMlNhkTt2tZnh8z.jpg",
+					"semi_transient": false,
+					"stack_index": 1,
+					"type": "image"
+				},
+				{
+					"buffer": 1,
+					"file": "api/services/jwt.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 501,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								459,
+								494
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "cesar-nodejs.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 189.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
