@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"pa",
+				"params"
+			],
+			[
 				"ima",
 				"image"
 			],
@@ -70,10 +74,6 @@
 			[
 				"e",
 				"email"
-			],
-			[
-				"pa",
-				"password"
 			],
 			[
 				"in",
@@ -263,22 +263,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "api/routes/user.js",
-			"settings":
-			{
-				"buffer_size": 864,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "api/services/jwt.js",
-			"settings":
-			{
-				"buffer_size": 501,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -319,17 +303,24 @@
 		"/D/WebCesar/cesar-nodejs",
 		"/D/WebCesar/cesar-nodejs/api",
 		"/D/WebCesar/cesar-nodejs/api/controllers",
+		"/D/WebCesar/cesar-nodejs/api/middlewares",
+		"/D/WebCesar/cesar-nodejs/api/models",
 		"/D/WebCesar/cesar-nodejs/api/routes",
 		"/D/WebCesar/cesar-nodejs/api/services",
-		"/D/WebCesar/cesar-nodejs/api/uploads"
+		"/D/WebCesar/cesar-nodejs/api/uploads",
+		"/D/WebCesar/cesar-nodejs/api/uploads/users"
 	],
 	"file_history":
 	[
-		"/D/WebCesar/cesar-nodejs/api/models/user.js",
-		"/D/WebCesar/cesar-nodejs/api/index.js",
 		"/D/WebCesar/cesar-nodejs/api/controllers/user.js",
-		"/D/WebCesar/cesar-nodejs/api/app.js",
 		"/D/WebCesar/cesar-nodejs/api/routes/user.js",
+		"/D/WebCesar/cesar-nodejs/api/models/user.js",
+		"/D/WebCesar/cesar-nodejs/api/uploads/users/upload_2d1e3392583ecfba9195d963efb5e854.pdf",
+		"/D/WebCesar/cesar-nodejs/api/uploads/users/upload_51fdfa73d133c6772f605dd6499bc2c6",
+		"/D/WebCesar/cesar-nodejs/api/app.js",
+		"/D/WebCesar/cesar-nodejs/api/package.json",
+		"/D/WebCesar/cesar-nodejs/api/uploads/users/0TaCTrKg3pMlNhkTt2tZnh8z.jpg",
+		"/D/WebCesar/cesar-nodejs/api/index.js",
 		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/uploads/users/xIBfRET2r77or6X22x4fsCG4.JPG",
 		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/controllers/user.js",
 		"/D/Web Proy/Cesar/Pulpa/cesar-nodejs/api/models/user.js",
@@ -383,7 +374,7 @@
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 29.0
 	},
 	"find_in_files":
 	{
@@ -398,6 +389,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"con",
 			".then",
 			"console",
 			"con",
@@ -441,82 +433,18 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "api/routes/user.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 864,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"file": "api/uploads/users/0TaCTrKg3pMlNhkTt2tZnh8z.jpg",
-					"semi_transient": false,
-					"stack_index": 1,
-					"type": "image"
-				},
-				{
-					"buffer": 1,
-					"file": "api/services/jwt.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 501,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								459,
-								494
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 29.0
 	},
 	"input":
 	{
-		"height": 39.0
+		"height": 41.0
 	},
 	"layout":
 	{
@@ -553,7 +481,7 @@
 	"project": "cesar-nodejs.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 54.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -591,7 +519,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 189.0,
+	"side_bar_width": 215.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

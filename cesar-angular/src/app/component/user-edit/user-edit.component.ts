@@ -30,7 +30,7 @@ export class UserEditComponent implements OnInit {
 		this.identity = this._userService.getIdentity();
 		this.user = this.identity;
 		this.token = this._userService.getToken();
-		this.urlImage = (this.user.image)? this._userService.getImage(this.user): '../../favicon.ico';
+		//this.urlImage = (this.user.image)? this._userService.getImage(this.user): '../../favicon.ico';
 	}
 
 	ngOnInit(){
@@ -47,13 +47,13 @@ export class UserEditComponent implements OnInit {
 					this.identity = this.user;
 
 					//Upload Image
-					if(this.filesToUpload && this.filesToUpload.length > 0) {
+					/*if(this.filesToUpload && this.filesToUpload.length > 0) {
 						this._uploadService.makeFileRequest('upload-image-user/' + this.user._id, [], this.filesToUpload, this.token, 'image')
 											.then((result: any) => {
 												this.filesToUpload = null;
 												console.log(result);
-												this.user.image = result.user.image;
-												this.urlImage = this._userService.getImage(this.user);
+												//this.user.image = result.user.image;
+												//this.urlImage = this._userService.getImage(this.user);
 												localStorage.setItem('identity', JSON.stringify(this.user));
 												this.identity = this.user;
 											})
@@ -70,7 +70,7 @@ export class UserEditComponent implements OnInit {
 													this.message = 'Try again.';
 												}
 											});
-					}
+					}*/
 					//-----------------------
 
 				} else {

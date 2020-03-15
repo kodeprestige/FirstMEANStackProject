@@ -12,6 +12,9 @@ var jwt = require('../services/jwt');
 var fs = require('fs');
 var path = require('path');
 
+//upload files
+const IncomingForm = require('formidable').IncomingForm;
+
 //test
 function test(req, res){
 	res.status(200).send({message: 'test: ok'});
@@ -19,9 +22,6 @@ function test(req, res){
 
 function validateData(err, user, res){
 	if(err.code == 11000){ //Duplicated user
-		if(user.nick && err.errmsg.indexOf("\"" + user.nick.toLowerCase() + "\"") != -1) {
-			return res.status(404).send({message: 'Nickname already exists.'});
-		}
 		return res.status(404).send({message: 'Email already exists.'});
 	}
 	if (err.errors.email.name == 'ValidatorError') { //Email is invalid 
@@ -36,11 +36,18 @@ function saveUser(req, res) {
 	var params = req.body,
 		user = new User();
 
+		/*(user.name = params.name) && (user.lastname = params.lastname) && 
+		(user.address = params.address) && (user.city = params.city) && 
+		(user.state = params.state) && (user.postal_code = params.postal_code) && 
+		(user.phone = params.phone) && */
 
 	//Verify that all fields have been filled
-	if((user.name = params.name) && (user.lastname = params.lastname) && (user.nick = params.nick) && 
-								(user.email = params.email) && params.password)
+	if((user.email = params.email) && params.password)
 	{
+
+		user.mi = (params.mi)? params.mi: null;
+		user.address2 = (params.address2)? params.address2: null;
+
 		//encrypt password
 		return bcrypt.hash(params.password, null, null, (err, hash) => {
 			if (err)
@@ -48,7 +55,6 @@ function saveUser(req, res) {
 			user.password = hash;
 
 			user.role = (params.role)? params.role: 'ROLE_USER';
-			user.image = (params.image)? params.image: null;
 			user.created_at = moment().unix();
 
 			//Save user
@@ -75,28 +81,14 @@ function saveUser(req, res) {
 //login a user. Receives nickname or email
 function loginUser(req, res) {
 	var params = req.body,
-		nickOrEmail,
+		email,
 		password;
-		
 
-	if (!((nickOrEmail = params.nick) && (password = params.password))) 
+	if (!((email = params.email) && (password = params.password))) {
 		return res.status(200).send({message: 'User data are incomplete!'});
-
-	var id,
-		id2Find;
-
-	nickOrEmail = nickOrEmail.toLowerCase();
-
-	//to know if nickname or email 
-	if (nickOrEmail.match("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")){ // if true is an email
-		id = 'Email';
-		id2Find = {email: nickOrEmail};
-	} else {
-		id = 'Nickname';
-		id2Find = {nick: nickOrEmail};
 	}
 
-	User.findOne(id2Find, (err, user) => {
+	User.findOne({email: email = email.toLowerCase()}, (err, user) => {
 		if (err) {
 			res.status(500).send({message: 'Error in the request of users.'});
 		} else if (user) {
@@ -113,12 +105,12 @@ function loginUser(req, res) {
 						res.status(200).send({user});
 					}
 				} else {
-					res.status(404).send({message: id + ' or Password you entered was incorrect.'});
+					res.status(404).send({message: 'Email or Password you entered was incorrect.'});
 				}
 			});
 			
 		} else {
-			res.status(404).send({message: id + ' or Password you entered was incorrect.'});
+			res.status(404).send({message: 'Email or Password you entered was incorrect.'});
 		}
 	}); 
 
@@ -176,6 +168,7 @@ function updateUser(req, res) {
 	var update = req.body;
 
 	//delete user's password and role
+	delete update.email;
 	delete update.password;
 	delete update.role;
 
@@ -185,16 +178,16 @@ function updateUser(req, res) {
 	}
 
 	//update user
-		return User.findByIdAndUpdate(userId, update, {new:true}, (err, userUpdated) => {
-			if (err) {
-				return validateData(err, update, res);
-			}
-			if (!userUpdated) {
-				return res.status(404).send({message: 'User could not be updated.'});
-			}
-			userUpdated.password = undefined;
-			return res.status(200).send({user: userUpdated});
-		});
+	return User.findByIdAndUpdate(userId, update, {new:true}, (err, userUpdated) => {
+		if (err) {
+			return validateData(err, update, res);
+		}
+		if (!userUpdated) {
+			return res.status(404).send({message: 'User could not be updated.'});
+		}
+		userUpdated.password = undefined;
+		return res.status(200).send({user: userUpdated});
+	});
 
 }
 
@@ -213,7 +206,7 @@ function uploadImage(req, res) {
 
 		if (image.type.indexOf('image/') != 0) return removeFilesOfUploads(res, file_path, 'File is not an image.');
 		
-		return User.findByIdAndUpdate(userId, {image: file_path.substring(file_path.lastIndexOf('\\') + 1)}, {new:true}, (err, userUpdated) => {
+		return User.findByIdAndUpdate(userId, {driver_lic: file_path.substring(file_path.lastIndexOf('\\') + 1)}, {new:true}, (err, userUpdated) => {
 			if (err) {
 				return removeFilesOfUploads(res, file_path, 'Error updating user.');
 			}
@@ -229,13 +222,54 @@ function uploadImage(req, res) {
 	return res.status(404).send({message: 'No images have been uploaded'});
 }
 
+//upload user's files
+function upload(req, res) {
+
+	/*if ((userId = req.params.id) != req.user.sub) {
+		return removeFilesOfUploads(res, file_path, 'Permission denied.');
+	}*/
+
+	var userId = req.params.id;
+
+	var form = new IncomingForm();
+
+	form.uploadDir = './uploads/users';
+	form.keepExtensions = true;
+
+	form.on('file', (field, file) => {
+
+		var file_path = file.path;
+
+		console.log('fp: ' + file_path);
+
+	    return User.findByIdAndUpdate(userId, {[req.params.id_doc]: file_path.substring(file_path.lastIndexOf('\\') + 1)}, {new:true}, (err, userUpdated) => {
+			if (err) {
+				return removeFilesOfUploads(res, file_path, 'Error updating user.');
+			}
+			if (!userUpdated) {
+				return removeFilesOfUploads(res, file_path, 'User could not be updated.');
+			}
+			userUpdated.password = undefined;
+			//return res.status(200).send({user: userUpdated});
+		});
+
+	});
+
+	form.on('end', () => {
+	    res.json();
+	});
+
+	form.parse(req);
+
+}
+
 //Remove uploading file
 function removeFilesOfUploads (res, file_path, msg) {
 	fs.unlink(file_path, (err) => {
 		if (err) 
 			return res.status(500).send({message: msg + ' Error unlinking'});
 
-		return res.status(404).send({message: msg});
+		//return res.status(404).send({message: msg});
 	});
 }
 
@@ -260,6 +294,7 @@ module.exports = {
 	getUsers,
 	updateUser,
 	uploadImage,
+	upload,
 	getImageFile,
 	test
 }

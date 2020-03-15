@@ -6,7 +6,7 @@ var port = 3800;
 
 //Connection database
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/cesar-eldercare', { useNewUrlParser: true})
+mongoose.connect('mongodb://localhost:27017/eldercare', { useNewUrlParser: true})
 		.then(() => {
 			console.log("connection success");
 

@@ -12,6 +12,8 @@ import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { UserEditComponent } from './component/user-edit/user-edit.component';
+import { UploadDocComponent } from './component/upload-doc/upload-doc.component';
+import { StepperComponent } from './component/step-form/step-form.component';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -28,11 +30,19 @@ import {
   MatAutocompleteModule,
   MatInputModule,
   MatGridListModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatDatepickerModule,
+  MatSelectModule,
+  MatNativeDateModule,
+  MatStepperModule,
+  MatProgressBarModule
 } from '@angular/material';
+
 import { MainNavComponent } from './component/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { NavListComponent } from './component/main-nav/nav-list/nav-list.component';
+
+import { UploadModule } from './component/upload/upload.module';
 
 
 @NgModule({
@@ -42,10 +52,13 @@ import { NavListComponent } from './component/main-nav/nav-list/nav-list.compone
     LoginComponent,
     RegisterComponent,
     UserEditComponent,
+    UploadDocComponent,
     MainNavComponent,
-    NavListComponent
+    NavListComponent,
+    StepperComponent
   ],
   imports: [
+    UploadModule,
     BrowserModule,
     routing,
     HttpClientModule,
@@ -64,6 +77,11 @@ import { NavListComponent } from './component/main-nav/nav-list/nav-list.compone
     MatInputModule,
     MatGridListModule,
     MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatStepperModule,
+    MatProgressBarModule,
     LayoutModule
   ],
   providers: [

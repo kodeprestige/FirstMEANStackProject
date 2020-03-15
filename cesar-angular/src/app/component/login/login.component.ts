@@ -5,9 +5,6 @@ import { Router, ActivatedRoute, Params} from '@angular/router';
 import { User } from '../../models/user'
 import { UserService } from '../../services/user.service';
 
-//Utils
-import { UTILS } from '../../services/utils';
-
 //Form
 import { FormBuilder, 
 	FormGroup, 
@@ -19,6 +16,9 @@ import { FormBuilder,
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ErrorStateMatcher } from '@angular/material/core';
+
+//Controls
+import { Controls, MyErrorStateMatcher } from '../components.utils/controls';
 
 //animate
 import { trigger, transition, useAnimation } from '@angular/animations';
@@ -46,6 +46,8 @@ import {
 export class LoginComponent implements OnInit {
 
 	public title: string;
+	public subtitle: string;
+	public notTitle: string;
 	public user: User;
 	public identity;
 	public token;
@@ -53,8 +55,16 @@ export class LoginComponent implements OnInit {
 	public loginShow: string;
 	public incorrectLogin: boolean;
 
+	public isLoginned: boolean;
+
 	rubberBand = false;
 	swing = false;
+
+
+	controls = new Controls();
+	email = new FormControl('', [Validators.required, Validators.email, this.controls.emailValidator]);
+	password = new FormControl('', [Validators.required, this.controls.passwordValidator]);
+	repassword = new FormControl({value: '', disabled: false}, [Validators.required, this.controls.matchPasswordValidator]);
 
 	constructor(
 		private _route: ActivatedRoute,
@@ -62,8 +72,13 @@ export class LoginComponent implements OnInit {
 		private _userService: UserService,
 		private formBuilder: FormBuilder
 	){
-		this.title = 'Welcome to Concepts in Eldercare for employees';
-		this.user = new User ("", "", "", "", "", "", "ROLE_USER", "", "");
+		this.title = 'Log In';
+		this.subtitle = 'Welcome to Concepts in Eldercare for employees';
+		this.notTitle = 'Sing Up';
+		
+		this.isLoginned = true;
+
+		this.user = new User ();
 
 		this.loginShow = "form";
 		this.message = 'Sorry. An internal error occurred.';
@@ -71,23 +86,42 @@ export class LoginComponent implements OnInit {
 	}
 	
 	ngOnInit() {
-		
+		//Password and repassword
+		const passwordGroup = new FormGroup({'password' : this.password, 'repassword' : this.repassword});
+		this.password.setParent(passwordGroup);
+		this.repassword.setParent(passwordGroup);
 	}
 
-	email = new FormControl('', [Validators.required, Validators.email]);
-	password = new FormControl('', [Validators.required]);
+	toggle(){
+		this.isLoginned = !this.isLoginned;
+		var tmp = this.title;
+		this.title = this.notTitle;
+		this.notTitle = tmp;
+	}
+
 	errorState = new MyErrorStateMatcher();
 
 	onSubmit(loginForm: NgForm) {
-		if (!this.isFormValid([this.email, this.password], loginForm)) {
-			//Incorrect login
+		if (this.isLoginned) {
+			this.login(loginForm);
+		} else {
+			this.register(loginForm);
+		}
+	}
+
+	login(loginForm: NgForm) {
+		if (!this.controls.isFormValid([ 
+			this.email, 
+			this.password], 
+			loginForm, this.errorState)) {
+			//Incorrect register
     		this.rubberBand = !this.rubberBand;
 			return;
 		}
 
 		this.loginShow = 'progress';
 
-		this.user.nick = this.email.value;
+		this.user.email = this.email.value;
 		this.user.password = this.password.value;
 		this.password.reset();
 		
@@ -110,7 +144,7 @@ export class LoginComponent implements OnInit {
 
 
 					//Go to My data
-					this._router.navigate(['/']);
+					this._router.navigate(['/step-form']);
 
 				} else {
 					this.loginShow = 'alert';
@@ -139,35 +173,62 @@ export class LoginComponent implements OnInit {
 		);
 	}
 
+	register(registerForm: NgForm) {
+
+		if (!this.controls.isFormValid([
+			this.email, 
+			this.password, 
+			this.repassword], 
+			registerForm, this.errorState)) {
+			//Incorrect register
+    		this.rubberBand = !this.rubberBand;
+			return;
+		}
+
+		this.loginShow = 'progress';
+
+		this.user.email = this.email.value;
+		this.user.password = this.password.value;
+
+		this.password.reset();
+		this.repassword.reset();
+		this.repassword.disable({emitEvent: true});
+
+		//Verify sending email code
+
+		this._userService.register(this.user).subscribe(
+			response => {
+				if(response.user && response.user._id) {
+					//Go to Login
+					this.loginShow = 'form';
+					this.toggle();
+					this._router.navigate(['/home']);
+					registerForm.reset();
+				} else {
+					this.loginShow = 'alert';
+					this.message = 'Sorry. An internal error occurred. Try again later.';
+				}
+			},
+			err => {
+				this.loginShow = 'alert';
+				console.log(err);
+
+				if(err && (this.message = err.error.message)) {
+					if(this.message != 'Email already exists.') {
+						console.log(this.message);
+						this.message = 'Sorry. An internal error occurred. Try again later.';
+					}
+				} else {
+					this.message = 'Sorry. An internal error occurred. Try again later.';
+				}
+			}
+		);
+		
+	}
+
 	tryAgain(){
 		this.swing = !this.swing;
 		this.loginShow = "form";
-	}
-
-	isFormValid(controls: FormControl[], form: NgForm): boolean {
-		var flag = false;
-		var i = 0;
-
-
-		var BreakException = {};
-
-		try {
-			controls.forEach(control => {
-				console.log(i++);
-				if(flag = this.errorState.isErrorState(control, form) || control.invalid){
-					console.log(flag);
-					console.log(control);
-					throw BreakException;
-				}
-			});
-		} catch (e) {
-		  	if (e !== BreakException) throw e;
-		}
-
-		
-		console.log("2");
-		console.log(flag);
-		return !flag;
 	}
 
   	getErrorMessage() {
@@ -176,12 +237,4 @@ export class LoginComponent implements OnInit {
 	            '';
 	}
 
-}
-
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
 }

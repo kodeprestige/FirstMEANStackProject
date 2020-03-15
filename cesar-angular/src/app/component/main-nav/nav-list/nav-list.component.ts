@@ -11,7 +11,6 @@ export class NavListComponent implements OnInit, DoCheck {
 
   public title:string;
   public identity;
-  public urlImage;
 
   constructor(
     private _route: ActivatedRoute,
@@ -19,7 +18,6 @@ export class NavListComponent implements OnInit, DoCheck {
     private _userService: UserService
   ){
     this.title = 'Concepts In Eldercare';
-    this.urlImage = (this.identity && this.identity.image)? this._userService.getImage(this.identity): '../../favicon.ico';
   }
 
   logout(){
@@ -34,7 +32,6 @@ export class NavListComponent implements OnInit, DoCheck {
 
   ngDoCheck(){
     this.identity = this._userService.getIdentity();
-    this.urlImage = (this.identity && this.identity.image)? this._userService.getImage(this.identity): '../../favicon.ico';
   }
 
 }

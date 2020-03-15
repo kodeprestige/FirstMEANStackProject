@@ -6,19 +6,16 @@ import { User } from '../models/user';
 
 @Injectable()
 export class UserService {
-	public url:string;
 	public identity;
 	public token;
 
-	constructor(public _http: HttpClient) {
-		this.url = GLOBAL.url;
-	}
+	constructor(public _http: HttpClient) {}
 
 	register(user: User): Observable<any> {
 		let params = JSON.stringify(user);
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-		return this._http.post(this.url + 'register', params, {headers: headers});
+		return this._http.post(GLOBAL.url + 'register', params, {headers: headers});
 	}
 
 	singup(user, gettoken = false): Observable<any> {
@@ -27,7 +24,7 @@ export class UserService {
 		let params = JSON.stringify(user);
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-		return this._http.post(this.url + 'login', params, {headers: headers});
+		return this._http.post(GLOBAL.url + 'login', params, {headers: headers});
 	}
 
 	getIdentity(){
@@ -49,12 +46,12 @@ export class UserService {
 		let headers = new HttpHeaders().set('Content-Type', 'application/json')
 										.set('Authorization', this.getToken());
 
-		return this._http.put(this.url + 'update-user/' + user._id, params, {headers: headers});
+		return this._http.put(GLOBAL.url + 'update-user/' + user._id, params, {headers: headers});
 	}
 
-	getImage(user: User): string {
+	/*getImage(user: User): string {
 		console.log(this.url + 'get-image-user/' + user.image);
 		return this.url + 'get-image-user/' + user.image;
-	}
+	}*/
 
 }

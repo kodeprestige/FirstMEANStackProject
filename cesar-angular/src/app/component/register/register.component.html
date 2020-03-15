@@ -9,36 +9,106 @@
 		    <mat-card-subtitle>Concepts in Eldercare Application</mat-card-subtitle>
 		</mat-card>
 
-		<div class="container progress" *ngIf="loginShow == 'progress'">
+		<div class="container progress" *ngIf="registerShow == 'progress'">
 			<mat-progress-spinner
-		        class="example-margin"
+		        class="margin"
 		        color='primary'
 		        mode="indeterminate">
 		    </mat-progress-spinner>
 		</div>
 
-		<mat-card class="card-alert" *ngIf="loginShow == 'alert'">
+		<mat-card class="card-alert" *ngIf="registerShow == 'alert'">
 
 		  <mat-card-title class="title">
 				{{message}} 
 				<p> 
 					<button (click)="tryAgain()" mat-raised-button color="primary">Try again</button>
 				</p>
-				<p *ngIf="incorrectLogin"> 
+				<p *ngIf="incorrectRegister"> 
 					<button mat-stroked-button>Forgot password?</button>
 				</p>
-				<p *ngIf="!incorrectLogin"> 
+				<p *ngIf="!incorrectRegister"> 
 					If the error persists, please, <a href="http://conceptsineldercare.com/?page_id=103"> contact us </a>
 				</p>
 		  </mat-card-title>
 		</mat-card>
 
-	  	<form #loginForm="ngForm" *ngIf="loginShow == 'form'">
+
+	  	<form #registerForm="ngForm" *ngIf="registerShow == 'form'">
+
+	  		<table class="full-width" cellspacing="0"><tr>
+			    <td><mat-form-field class="full-width">
+			      <input matInput placeholder="First name" [formControl]="name" required>
+			      <mat-error *ngIf="name.invalid">You must enter your name</mat-error>
+			    </mat-form-field></td>
+			    <td><mat-form-field class="full-width">
+			      <input matInput placeholder="MI"  [formControl]="mi" maxlength="1">
+			      <mat-error *ngIf="mi.invalid">You must enter the initial letter of your middle name</mat-error>
+			    </mat-form-field></td>
+			    <td><mat-form-field class="full-width">
+			      <input matInput placeholder="Last Name" [formControl]="lastname" required>
+			      <mat-error *ngIf="lastname.invalid">You must enter a value</mat-error>
+			    </mat-form-field></td>
+		  	</tr></table>
+
+		  	<mat-form-field class="full-width">
+			  	<input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Date of birthday">
+			  	<mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+			  	<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+
+		    <mat-form-field class="full-width">
+		    	<textarea matInput placeholder="Address" [formControl]="address" required></textarea>
+		    	<mat-error *ngIf="password.invalid">You must enter a value</mat-error>
+		    </mat-form-field>
+
+		    <mat-form-field class="full-width">
+		    	<textarea matInput placeholder="Address 2"[formControl]="address2"></textarea>
+		    </mat-form-field>
+
+			<table class="full-width" cellspacing="0"><tr>
+			    <td><mat-form-field class="full-width">
+			      <input matInput placeholder="City" [formControl]="city" required>
+			    </mat-form-field></td>
+
+			    <td>
+			  		<mat-form-field>
+			    		<input type="text" matInput placeholder="State" [formControl]="stateGroup" required [matAutocomplete]="autoGroup">
+			      		<mat-autocomplete #autoGroup="matAutocomplete">
+					        <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+					          <mat-option *ngFor="let name of group.names" [value]="name">
+					            {{name}}
+					          </mat-option>
+					      </mat-optgroup>
+			    		</mat-autocomplete>
+			 		</mat-form-field></td>
+
+			    <td><mat-form-field class="full-width">
+			      <input matInput #postalCode maxlength="5" placeholder="Postal Code" [formControl]="zip" required>
+			      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+			    </mat-form-field></td>
+
+			</tr></table>
+
+			<mat-form-field class="full-width">
+				<mat-select placeholder="You are applying for:" [formControl]="position" required>
+				    <mat-option *ngFor="let selected of positions" [value]="selected">
+				      {{selected}}
+				    </mat-option>
+		  		</mat-select>
+			  	<mat-error *ngIf="position.hasError('required')">You must enter a value</mat-error>
+			</mat-form-field>
+
+			<mat-form-field class="full-width">
+				<span matPrefix>+1 &nbsp;</span>
+				<input type="tel" matInput placeholder="Telephone" [formControl]="phone" required>
+				<mat-icon matSuffix>phone</mat-icon>
+			</mat-form-field>
 
 	  		<mat-form-field>
 	  			<mat-icon matSuffix>email</mat-icon>
-			    <input matInput type="email" placeholder="Enter your email" [formControl]="email" required>
-			    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+			    <input matInput type="email" placeholder="Email" [formControl]="email" required>
+			    <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
 			</mat-form-field>
 
 	  		<mat-form-field>
@@ -49,33 +119,18 @@
 				<mat-error *ngIf="password.invalid">You must enter a value</mat-error>
 			</mat-form-field>
 
-			<form [formGroup]="stateForm">
-
-	  			
-			  <mat-form-field>
-			    <input type="text" matInput placeholder="States Group" formControlName="stateGroup" required [matAutocomplete]="autoGroup">
-			      <mat-autocomplete #autoGroup="matAutocomplete">
-			        <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
-			          <mat-option *ngFor="let name of group.names" [value]="name">
-			            {{name}}
-			          </mat-option>
-			      </mat-optgroup>
-			    </mat-autocomplete>
-			  </mat-form-field>
-			</form>
-
-			<p>
-				<button [routerLink]="['/register']" [routerLinkActive]="['active']" mat-button color="primary">
-					<mat-icon>person_add</mat-icon>
-					Sing up
+			<mat-form-field>
+			    <input matInput placeholder="Confirm your Password" [type]="show ? 'text' : 'password'" [formControl]="repassword" required>
+			    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="show = !show">
+				    <mat-icon>{{show ? 'visibility_off' : 'visibility'}}</mat-icon>
 				</button>
-			</p>
-			<button mat-stroked-button color="warn">Forgot password?</button>
+				<mat-error *ngIf="password.invalid">You must enter a value</mat-error>
+			</mat-form-field>
 
 			<mat-card-actions>
-			    <button (click)="onSubmit(loginForm)" value="Login" mat-raised-button class="card-btn" color="primary">
-			    	Log in
-				    <mat-icon>person</mat-icon>
+			    <button (click)="onSubmit(registerForm)" value="Register" mat-raised-button class="card-btn" color="primary">
+			    	<mat-icon>person_add</mat-icon>
+					Sing up
 				</button>
 			</mat-card-actions> 
 		</form>

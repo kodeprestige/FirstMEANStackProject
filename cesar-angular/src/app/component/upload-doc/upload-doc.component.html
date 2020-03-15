@@ -1,0 +1,13 @@
+<div>
+	<img class="img-responsive" src="{{urlImage}}"/>
+</div>
+
+<p>
+	<label>Upload Image</label>
+	<input type="file" accept="image/*" placeholder="Upload Image" (change)="fileChangeEvent($event)"/>
+</p>
+
+<p>
+	<label>Upload PDF</label>
+	<input type="file" accept="application/pdf" placeholder="Upload pdf" (change)="fileChangeEvent($event)"/>
+</p>

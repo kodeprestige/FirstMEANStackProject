@@ -1,22 +1,25 @@
 <div class="content">	
+	<!--efects-->
 	<mat-card class="card" 
 		[@swing]="swing"
 		[@rubberBand]="rubberBand"
 		[@lightSpeedIn]="{ value: lightSpeedIn, params: { timing: 0.6 } }" >
 
+		<!--header-->
 		<mat-card class="card-header">
-		    <mat-card-title class="title">Log in</mat-card-title>
-		    <mat-card-subtitle>Concepts in Eldercare Application</mat-card-subtitle>
+		    <mat-card-title class="title">{{title}}</mat-card-title>
+		    <mat-card-subtitle>{{subtitle}}</mat-card-subtitle>
 		</mat-card>
 
+		<!--spinner-->
 		<div class="container progress" *ngIf="loginShow == 'progress'">
 			<mat-progress-spinner
-		        class="example-margin"
 		        color='primary'
 		        mode="indeterminate">
 		    </mat-progress-spinner>
 		</div>
 
+		<!--Alert-->
 		<mat-card class="card-alert" *ngIf="loginShow == 'alert'">
 
 		  <mat-card-title class="title">
@@ -33,15 +36,17 @@
 		  </mat-card-title>
 		</mat-card>
 
+		<!--Form-->
 	  	<form #loginForm="ngForm" *ngIf="loginShow == 'form'">
 
+	  		<!--Email-->
 	  		<mat-form-field>
 	  			<mat-icon matSuffix>email</mat-icon>
 			    <input matInput type="email" placeholder="Enter your email" [formControl]="email" required>
 			    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
 			</mat-form-field>
 
-
+			<!--Password-->
 	  		<mat-form-field>
 			    <input matInput placeholder="Enter your Password" [type]="show ? 'text' : 'password'" [formControl]="password" required>
 			    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="show = !show">
@@ -50,17 +55,37 @@
 				<mat-error *ngIf="password.invalid">You must enter a value</mat-error>
 			</mat-form-field>
 
+			<!--If the user is registering-->
+			<mat-form-field *ngIf="!isLoginned">
+			    <input matInput placeholder="Confirm your Password" [type]="show ? 'text' : 'password'" [formControl]="repassword" required>
+			    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="show = !show">
+				    <mat-icon>{{show ? 'visibility_off' : 'visibility'}}</mat-icon>
+				</button>
+				<mat-error *ngIf="password.invalid">You must enter a value</mat-error>
+			</mat-form-field>
+			
 			<p>
-				<button [routerLink]="['/register']" [routerLinkActive]="['active']" mat-button color="primary">
-					<mat-icon>person_add</mat-icon>
-					Sing up
+				<!--If the user is logging in-->
+				<span *ngIf="isLoginned">New Employee?</span>
+
+				<!--If the user is registering-->
+				<span *ngIf="!isLoginned">Already have an account?</span>
+				<button (click)="toggle()" [routerLinkActive]="['active']" mat-button color="primary">
+					<!--If the user is logging in-->
+					<mat-icon *ngIf="isLoginned">person_add</mat-icon>
+
+					<!--If the user is registering-->
+					<mat-icon *ngIf="!isLoginned">account_circle</mat-icon>
+					{{notTitle}}
 				</button>
 			</p>
-			<button mat-stroked-button color="warn">Forgot password?</button>
+
+			<!--If the user is logging in-->
+			<button *ngIf="isLoginned" mat-stroked-button color="warn">Forgot password?</button>
 
 			<mat-card-actions>
 			    <button (click)="onSubmit(loginForm)" value="Login" mat-raised-button class="card-btn" color="primary">
-			    	Log in
+			    	{{title}}
 				    <mat-icon>person</mat-icon>
 				</button>
 			</mat-card-actions> 

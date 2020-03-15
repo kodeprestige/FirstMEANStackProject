@@ -1,3 +1,70 @@
-<div class="col-lg-8 col-lg-offset-2">
-	<h1 class="h1-strong">{{title}}</h1>
+<div class="content">	
+	<mat-card class="card" 
+		[@swing]="swing"
+		[@rubberBand]="rubberBand"
+		[@lightSpeedIn]="{ value: lightSpeedIn, params: { timing: 0.6 } }" >
+
+		<mat-card class="card-header">
+		    <mat-card-title class="title">Log in</mat-card-title>
+		    <mat-card-subtitle>Concepts in Eldercare Application</mat-card-subtitle>
+		</mat-card>
+
+		<div class="container progress" *ngIf="loginShow == 'progress'">
+			<mat-progress-spinner
+		        class="example-margin"
+		        color='primary'
+		        mode="indeterminate">
+		    </mat-progress-spinner>
+		</div>
+
+		<mat-card class="card-alert" *ngIf="loginShow == 'alert'">
+
+		  <mat-card-title class="title">
+				{{message}} 
+				<p> 
+					<button (click)="tryAgain()" mat-raised-button color="primary">Try again</button>
+				</p>
+				<p *ngIf="incorrectLogin"> 
+					<button mat-stroked-button>Forgot password?</button>
+				</p>
+				<p *ngIf="!incorrectLogin"> 
+					If the error persists, please, <a href="http://conceptsineldercare.com/?page_id=103"> contact us </a>
+				</p>
+		  </mat-card-title>
+		</mat-card>
+
+	  	<form #loginForm="ngForm" *ngIf="loginShow == 'form'">
+
+	  		<mat-form-field>
+	  			<mat-icon matSuffix>email</mat-icon>
+			    <input matInput type="email" placeholder="Enter your email" [formControl]="email" required>
+			    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+			</mat-form-field>
+
+
+	  		<mat-form-field>
+			    <input matInput placeholder="Enter your Password" [type]="show ? 'text' : 'password'" [formControl]="password" required>
+			    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="show = !show">
+				    <mat-icon>{{show ? 'visibility_off' : 'visibility'}}</mat-icon>
+				</button>
+				<mat-error *ngIf="password.invalid">You must enter a value</mat-error>
+			</mat-form-field>
+
+			<p>
+				<button [routerLink]="['/register']" [routerLinkActive]="['active']" mat-button color="primary">
+					<mat-icon>person_add</mat-icon>
+					Sing up
+				</button>
+			</p>
+			<button mat-stroked-button color="warn">Forgot password?</button>
+
+			<mat-card-actions>
+			    <button (click)="onSubmit(loginForm)" value="Login" mat-raised-button class="card-btn" color="primary">
+			    	Log in
+				    <mat-icon>person</mat-icon>
+				</button>
+			</mat-card-actions> 
+		</form>
+
+	</mat-card>
 </div>
