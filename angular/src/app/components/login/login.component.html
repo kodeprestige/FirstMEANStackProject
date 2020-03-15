@@ -1,0 +1,178 @@
+<div class="container">
+
+	<div class="content">		
+	<!--efects-->
+	<mat-card class="card" 
+		[@swing]="swing"
+		[@rubberBand]="rubberBand"
+		[@flipInY]="flipInY">
+
+		<!--header-->
+		<mat-card class="card-header">
+		    <mat-card-title class="title">{{title}}</mat-card-title>
+		    <mat-card-subtitle>{{subtitle}}</mat-card-subtitle>
+		</mat-card>
+
+		<!--spinner-->
+		<div class="progress" *ngIf="loginShow == 'progress'">
+			<mat-progress-spinner
+		        color='primary'
+		        mode="indeterminate">
+		    </mat-progress-spinner>
+		</div>
+
+		<!--Alert-->
+		<mat-card class="card-alert" *ngIf="loginShow == 'alert'">
+
+		  <mat-card-title class="title">
+				{{message}} 
+				<p> 
+					<button (click)="tryAgain()" mat-raised-button color="primary">Try again</button>
+				</p>
+				<p *ngIf="incorrectLogin"> 
+					<button mat-stroked-button>Forgot password?</button>
+				</p>
+				<p *ngIf="!incorrectLogin"> 
+					If the error persists, please, <a href="https://material.angular.io/"> contact us </a>
+				</p>
+		  </mat-card-title>
+		</mat-card>
+
+		<!--Form-->
+	  	<form #loginForm="ngForm" *ngIf="loginShow == 'form'" (keyup.enter)="onSubmit(loginForm)">
+
+	  		<!--Email-->
+	  		<mat-form-field>
+	  			<mat-icon matSuffix>email</mat-icon>
+			    <input matInput type="email" placeholder="Enter your email" [formControl]="email" required>
+			    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+			</mat-form-field>
+
+			<!--Password-->
+	  		<mat-form-field>
+			    <input matInput placeholder="Enter your Password" [type]="show ? 'text' : 'password'" [formControl]="password" required>
+			    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="show = !show">
+				    <mat-icon>{{show ? 'visibility_off' : 'visibility'}}</mat-icon>
+				</button>
+				<mat-error *ngIf="password.invalid">You must enter a value</mat-error>
+			</mat-form-field>
+
+			<!--If the user is registering-->
+			<mat-form-field *ngIf="!isLoginned">
+			    <input matInput placeholder="Confirm your Password" [type]="show ? 'text' : 'password'" [formControl]="repassword" required>
+			    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="show = !show">
+				    <mat-icon>{{show ? 'visibility_off' : 'visibility'}}</mat-icon>
+				</button>
+				<mat-error *ngIf="password.invalid">You must enter a value</mat-error>
+			</mat-form-field>
+			
+			<p>
+				<!--If the user is logging in-->
+				<span *ngIf="isLoginned">New Employee?</span>
+
+				<!--If the user is registering-->
+				<span *ngIf="!isLoginned">Already have an account?</span>
+				<button (click)="toggle()" [routerLinkActive]="['active']" mat-button color="primary">
+					<!--If the user is logging in-->
+					<mat-icon *ngIf="isLoginned">person_add</mat-icon>
+
+					<!--If the user is registering-->
+					<mat-icon *ngIf="!isLoginned">account_circle</mat-icon>
+					{{notTitle}}
+				</button>
+			</p>
+
+			<!--If the user is logging in-->
+			<button *ngIf="isLoginned" mat-stroked-button color="warn">Forgot password?</button>
+
+			<mat-card-actions>
+			    <button (click)="onSubmit(loginForm)" value="Login" mat-raised-button class="card-btn" color="primary">
+			    	{{title}}
+				    <mat-icon>person</mat-icon>
+				</button>
+			</mat-card-actions> 
+		</form>
+
+	</mat-card>
+
+</div>
+
+<div class="content " *ngIf="false">
+	
+	<div class="content example_card_text">
+		<mat-card>
+			<h1>This is an example</h1>
+			<h2>This is an example too. This is an example too. This is an example too. This is an example too. This is an example too.</h2>
+			<h3>This is an example too. This is an example too.</h3>
+		</mat-card>
+	</div>
+
+	<div class="content example_card_text">
+		<mat-card>
+			<h1>This is an example</h1>
+			<h2>This is an example too. This is an example too. This is an example too. This is an example too. This is an example too.</h2>
+			<h3>This is an example too. This is an example too.</h3>
+		</mat-card>
+	</div>
+
+	<div class="content example_card_text">
+		<mat-card>
+			<h1>This is an example</h1>
+			<h2>This is an example too. This is an example too. This is an example too. This is an example too. This is an example too.</h2>
+			<h3>This is an example too. This is an example too.</h3>
+		</mat-card>
+	</div>
+
+	<div class="content example_card_text">
+		<mat-card>
+			<h1>This is an example</h1>
+			<h2>This is an example too. This is an example too. This is an example too. This is an example too. This is an example too.</h2>
+			<h3>This is an example too. This is an example too.</h3>
+		</mat-card>
+	</div>
+
+	<div class="content">
+		<mat-card>
+			<h1>This is an example</h1>
+			<h2>This is an example too. This is an example too. This is an example too. This is an example too. This is an example too.</h2>
+			<h3>This is an example too. This is an example too.</h3>
+		</mat-card>
+	</div>
+
+	<div class="content example_card_text">
+		<mat-card>
+			<h1>This is an example</h1>
+			<h2>This is an example too. This is an example too. This is an example too. This is an example too. This is an example too.</h2>
+			<h3>This is an example too. This is an example too.</h3>
+		</mat-card>
+	</div>
+
+	<div class="content example_card_text">
+		<mat-card>
+			<h1>This is an example</h1>
+			<h2>This is an example too. This is an example too. This is an example too. This is an example too. This is an example too.</h2>
+			<h3>This is an example too. This is an example too.</h3>
+		</mat-card>
+	</div>
+
+<div class="content">
+		<mat-card class="card qr_background"
+			[@lightSpeedIn]="{ value: lightSpeedIn, params: { timing: 0.6 } }">
+			
+			<mat-card class="card-header">
+			    <mat-card-title class="title">To <a class="qr_textcolor" href="https://material.angular.io/"> contact us </a></mat-card-title>
+			    <mat-card-title class="title">scan or click on image.</mat-card-title>
+			</mat-card>
+
+			<a href="https://material.angular.io/" target="_blnak">
+			    <img type="image/png" src="qr_contact.png">
+			</a>
+
+		</mat-card>
+	</div>
+
+
+
+</div>
+
+</div>

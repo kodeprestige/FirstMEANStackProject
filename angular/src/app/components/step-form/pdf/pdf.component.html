@@ -1,0 +1,67 @@
+
+<mat-card class="card-step" fxFlex>
+  
+
+  <mat-card-header class="top">
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title class="card-title">PDF  {{posr}}</mat-card-title>
+    <mat-card-title class="text-normal">Plese select this form</mat-card-title>
+    <mat-card-subtitle  class="text-normal"><span class="text-alert">Note: </span>Fields with an asterisk <span class="text-alert">(*)</span> are required</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-vertical-stepper [linear]=true #stepper>    
+    
+
+    <mat-step [stepControl]="pdf">
+      
+      <form [formGroup]="pdfForFormGroup">
+        <ng-template matStepLabel>PDF</ng-template>
+
+
+
+         <div class="container">
+             <mat-form-field>
+              <mat-select formControlName="pdfselected" placeholder="PDF" [(value)]="pdfselected" onch required>
+                <mat-option *ngFor="let p of pdfs" [value]="p.value">
+                  {{p.show}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+         </div>
+        <div>
+          
+          <button mat-button  matStepperNext color="primary">Next</button>
+        </div>
+     </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>View PDF Selected</ng-template>
+      <p>
+        You are now done.<br><br>
+       <label class='red'>When you press save and next you will not be able to edit the information send.</label> 
+      </p>
+      <div class="container">
+        <button mat-button matStepperPrevious>Back</button>
+       
+        <a *ngIf="pdfselected" href='{{"http://localhost:3800/api/getPDF2/"+this.pdfForFormGroup.get("pdfselected").value+"/"+this.user._id}}' download>descargar aqui</a> <!-- ='{{this.user.email+".pdf"}}' -->
+      </div>        
+        <div *ngIf="isLoaded" style="text-align: center;">
+        <button mat-button (click)="prevPage()" [disabled]="page === 1">Prev</button>
+        <span>  {{ page }} / {{ totalPages }}  </span>
+        <button mat-button (click)="nextPage()" [disabled]="page === totalPages">Next</button>
+        </div>
+        <pdf-viewer 
+        *ngIf="pdfselected" 
+        class="container" 
+        src='{{"http://localhost:3800/api/getPDF2/"+this.pdfForFormGroup.get("pdfselected").value+"/"+this.user._id}}'
+        [show-all]="true"
+        [page]="page"
+        (after-load-complete)="afterLoadComplete($event)" 
+        autoresize="false">          
+        </pdf-viewer>
+   
+    </mat-step>
+  
+  </mat-vertical-stepper>
+</mat-card>

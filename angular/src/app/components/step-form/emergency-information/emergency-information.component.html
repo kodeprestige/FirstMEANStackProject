@@ -1,0 +1,174 @@
+
+<mat-card class="card-step" fxFlex>
+  
+
+  <mat-card-header class="top">
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title class="card-title">EMPLOYEE EMERGENCY NOTIFICATION {{posr}}</mat-card-title>
+    <mat-card-title class="text-normal">AS PER AGENCY POLICY. <label class="red">EVERY EMPLOYEE MUST COMPLETE AT LEAST TWO EMERGENCY NOTIFICA
+TION AS WELL AS UPDATE THE FORM AS NECESSARY.</label></mat-card-title>
+    <mat-card-subtitle  class="text-normal"><span class="text-alert">Note: </span>Fields with an asterisk <span class="text-alert">(*)</span> are required</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-vertical-stepper [linear]=true #stepper>
+    
+    <mat-step [stepControl]="ceFormGroup">
+      
+      <form [formGroup]="ceFormGroup">
+        <ng-template matStepLabel>IN CASE OF EMERGENCY NOTIFY NEXT OF KIN:</ng-template>
+
+        <div class="container">
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="given-name" placeholder="First name" formControlName="name" required>
+            <mat-error *ngIf="ceFormGroup.get('name').invalid">You must enter your name</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="additional-name" placeholder="MI" formControlName="mi" maxlength="1">
+            <mat-error *ngIf="ceFormGroup.get('mi').invalid">You must enter your MI</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="family-name" placeholder="Last Name" formControlName="lastname" required>
+            <mat-error *ngIf="ceFormGroup.get('lastname').invalid">You must enter your last name</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput placeholder="Relationship" formControlName="relationship"  [matAutocomplete]="auto" required>
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let relationship of filteredrelationship1 | async" [value]="relationship">
+                  {{relationship}}
+                </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="ceFormGroup.get('relationship').invalid">You must enter your Relationship</mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field class="field">
+            <textarea matInput placeholder="Address" formControlName="address" required></textarea>
+            <mat-error *ngIf="ceFormGroup.get('address').invalid">You must enter your address</mat-error>
+         </mat-form-field>
+          
+          <mat-form-field class="field" fxFlex>
+            <input matInput placeholder="City" formControlName="city" required>
+            <mat-error *ngIf="ceFormGroup.get('city').invalid">You must enter your city</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input type="text" matInput placeholder="State" formControlName="state" required [matAutocomplete]="autoGroup">
+              <mat-autocomplete #autoGroup="matAutocomplete">
+                <mat-optgroup *ngFor="let group of stateGroupOptions1 | async" [label]="group.letter">
+                  <mat-option *ngFor="let name of group.names" [value]="name">
+                    {{name}}
+                  </mat-option>
+              </mat-optgroup>
+            </mat-autocomplete>
+            <mat-error *ngIf="ceFormGroup.get('state').invalid">You must enter your state</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="number" #zipCode maxlength="5" placeholder="ZIP Code" formControlName="zip_code" required>
+            <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+            <mat-error *ngIf="ceFormGroup.get('zip_code').invalid">You must enter your ZIP Code</mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field class="field" fxFlex>
+            <span matPrefix>+1 &nbsp;</span>
+            <input type="number" minlength="1" maxlength="10" matInput placeholder="Phone" formControlName="phone"  required>
+            <mat-error *ngIf="ceFormGroup.get('phone').invalid">You must enter your Phone</mat-error>
+          </mat-form-field>
+
+          
+        </div>
+
+    
+        <div class="container" *ngIf="! (ceFormGroup.get('phone').invalid  || ceFormGroup.get('name').invalid || ceFormGroup.get('relationship').invalid || ceFormGroup.get('address').invalid || ceFormGroup.get('city').invalid || ceFormGroup.get('zip_code').invalid )">
+          <label class="container">SECOND EMERGENCY CONTACT (FRIEND OR RELATIVE NOT LEAVING WITH YOU)</label>
+
+         <mat-form-field class="field" fxFlex>
+            <input matInput type="given-name" placeholder="First name" formControlName="name2" required>
+            <mat-error *ngIf="ceFormGroup.get('name2').invalid">You must enter your name</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="additional-name" placeholder="MI" formControlName="mi2" maxlength="1">
+            <mat-error *ngIf="ceFormGroup.get('mi2').invalid">You must enter your MI</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="family-name" placeholder="Last Name" formControlName="lastname2" required>
+            <mat-error *ngIf="ceFormGroup.get('lastname2').invalid">You must enter your last name</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="additional-name" placeholder="Relationship" formControlName="relationship2" [matAutocomplete]="auto" required>
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let r of filteredrelationship2 | async" [value]="r">
+                  {{r}}
+                </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="ceFormGroup.get('relationship2').invalid">You must enter your Relationship</mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field class="field">
+            <textarea matInput placeholder="Address" formControlName="address2" required></textarea>
+            <mat-error *ngIf="ceFormGroup.get('address2').invalid">You must enter your address</mat-error>
+         </mat-form-field>
+          
+          <mat-form-field class="field" fxFlex>
+            <input matInput placeholder="City" formControlName="city2" required>
+            <mat-error *ngIf="ceFormGroup.get('city2').invalid">You must enter your city</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input type="text" matInput placeholder="State" formControlName="state2" required [matAutocomplete]="autoGroup">
+              <mat-autocomplete #autoGroup="matAutocomplete">
+                <mat-optgroup *ngFor="let group of stateGroupOptions2 | async" [label]="group.letter">
+                  <mat-option *ngFor="let name of group.names" [value]="name">
+                    {{name}}
+                  </mat-option>
+              </mat-optgroup>
+            </mat-autocomplete>
+            <mat-error *ngIf="ceFormGroup.get('state2').invalid">You must enter your state</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="number" #zipCode maxlength="5" placeholder="ZIP Code" formControlName="zip_code2" required>
+            <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+            <mat-error *ngIf="ceFormGroup.get('zip_code2').invalid">You must enter your ZIP Code</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <span matPrefix>+1 &nbsp;</span>
+            <input type="number" minlength="10" maxlength="10" matInput placeholder="Phone" formControlName="phone2"  required>
+            <mat-error *ngIf="ceFormGroup.get('phone2').invalid">You must enter your Phone</mat-error>
+          </mat-form-field>
+
+          
+        </div>
+
+        <div ><!--[disabled]="(ceFormGroup.get('lastname').invalid || ceFormGroup.get('name').invalid || ceFormGroup.get('mi').invalid )"-->
+          <button mat-button matStepperNext color="primary">Next</button>
+        </div>
+      </form>
+
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Save and Next</ng-template>
+      <p>
+        You are now done.<br><br>
+       <label class='red'>When you press save and next you will not be able to edit the information send.</label> 
+      </p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="onSubmit()">Save and Next</button>
+      </div>
+   
+    </mat-step>
+  
+  </mat-vertical-stepper>
+</mat-card>

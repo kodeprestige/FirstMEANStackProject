@@ -1,0 +1,755 @@
+
+<mat-card class="card-step" fxFlex>
+  
+
+  <mat-card-header class="top">
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title class="card-title">JOB INFORMATION {{posr}}</mat-card-title>
+    <mat-card-title class="text-normal">Plese fill this form</mat-card-title>
+    <mat-card-subtitle  class="text-normal"><span class="text-alert">Note: </span>Fields with an asterisk <span class="text-alert">(*)</span> are required</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-vertical-stepper [linear]=true #stepper>
+
+    <mat-step [stepControl]="applyForFormGroup">
+      <form [formGroup]="applyForFormGroup">
+        <ng-template matStepLabel>Apply for ...</ng-template>
+
+        <mat-form-field>
+          <input type="text" matInput placeholder="Choose specialty" formControlName="speciality" required [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let speciality of filteredSpecialties | async" [value]="speciality">
+                {{speciality}}
+              </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <div>          
+          <button mat-button matStepperNext color="primary">Next</button>
+        </div>
+      </form>
+    </mat-step>
+  
+    <mat-step [stepControl]="eiFormGroup">
+      <form [formGroup]="eiFormGroup">
+        <ng-template matStepLabel>Education Information</ng-template>
+
+
+
+                <!--PREGUNTAR HASTA Q NIVEL ESTUDIO Y MOSTRARLE LOS MISMOS PARA Q RELLENE LA INFO HACER ESTO CON UNA LISTA  -->
+        
+                      <mat-form-field >
+                          <mat-select (selectionChange)="selectedlevel($event)" [(ngModel)]="leveselected" formControlName="leveselected" placeholder="Selected your highest level"  required>
+                            <mat-option [value]="1">GRAMMAR SCHOOL</mat-option>
+                            <mat-option [value]="2">HIGH SCHOOL</mat-option>
+                            <mat-option [value]="3">COLLEGE</mat-option>
+                            <mat-option [value]="4">TRADE, OTHER SCHOOL</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      
+                     
+
+                        <mat-accordion class="example-headers-align">
+                            <mat-expansion-panel *ngIf="eiFormGroup.get('leveselected').value>=1" [expanded]="step1 === 0" (opened)="setStep1(0)" hideToggle>
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  GRAMMAR SCHOOL
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                  <mat-icon>border_color</mat-icon>
+                                </mat-panel-description>
+                              </mat-expansion-panel-header>
+
+                                  <div class="container ajustar">
+                             
+
+                                  <mat-form-field class="field" fxFlex >
+                                    <input matInput type="nameschool1" placeholder="Name of School *" formControlName="nameschool1"  >
+                                    <mat-error *ngIf="eiFormGroup.get('nameschool1').invalid">You must enter  Name  of School</mat-error>
+                                  </mat-form-field>
+
+
+                                     <mat-form-field class="field">
+                                        <textarea matInput placeholder="Address *" formControlName="address1" ></textarea>
+                                        <mat-error *ngIf="eiFormGroup.get('address1').invalid">You must enter address</mat-error>
+                                     </mat-form-field>
+                                          
+                                          <mat-form-field class="field" fxFlex>
+                                            <input matInput placeholder="City *" formControlName="city1" >
+                                     <mat-error *ngIf="eiFormGroup.get('city1').invalid">You must enter city</mat-error>
+                                          </mat-form-field>
+
+                                          <mat-form-field class="field" fxFlex>
+                                            <input type="text" matInput placeholder="State *" formControlName="state1"  [matAutocomplete]="autoGroup">
+                                              <mat-autocomplete #autoGroup="matAutocomplete">
+                                                <mat-optgroup *ngFor="let group of stateGroupOptions1 | async" [label]="group.letter">
+                                                  <mat-option *ngFor="let name of group.names" [value]="name">
+                                                    {{name}}
+                                                  </mat-option>
+                                              </mat-optgroup>
+                                            </mat-autocomplete>
+                                     <mat-error *ngIf="eiFormGroup.get('state1').invalid">You must enter state</mat-error>
+                                          </mat-form-field>
+
+                                          <mat-form-field class="field" fxFlex>
+                                            <input matInput type="number" #zipCode maxlength="5" placeholder="ZIP Code *" formControlName="zipcode1" >
+                                            <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+                                            <mat-error *ngIf="eiFormGroup.get('zipcode1').invalid">You must enter zipcode</mat-error>
+                                          </mat-form-field>
+
+
+
+
+                                  <mat-form-field class="field" fxFlex>
+                                    <input matInput type="number" placeholder="Years Attended *" formControlName="yearsattended1" >
+                                    <mat-error *ngIf="eiFormGroup.get('yearsattended1').invalid">You must enter Years Attended</mat-error>
+                                  </mat-form-field>
+
+                                  <mat-form-field class="field" fxFlex>
+                                    <input matInput type="subjectstudied1" placeholder="Subject Studied *" formControlName="subjectstudied1" >
+                                    <mat-error *ngIf="eiFormGroup.get('subjectstudied1').invalid">You must enter  Subject studied</mat-error>
+                                  </mat-form-field>
+
+                                </div>
+
+                              <mat-action-row>
+                                <button mat-button  *ngIf="eiFormGroup.get('leveselected').value>=2" color="primary" (click)="nextStep1()">Next</button>
+                              </mat-action-row>
+                            </mat-expansion-panel>
+
+                            <mat-expansion-panel  *ngIf="eiFormGroup.get('leveselected').value>=2" [expanded]="step1 === 1" (opened)="setStep(1)" hideToggle>
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  HIGH SCHOOL
+                                </mat-panel-title>
+                                <mat-panel-description>                                 
+                                  <mat-icon>border_color</mat-icon>
+                                </mat-panel-description>
+                              </mat-expansion-panel-header>
+
+                               <div class="container ajustar">
+
+                                   <mat-form-field class="field" fxFlex>
+                                            <input matInput type="nameschool2" placeholder="Name of School *" formControlName="nameschool2" >
+                                            <mat-error *ngIf="eiFormGroup.get('nameschool2').invalid">You must enter  Name of School</mat-error>
+                                          </mat-form-field>
+
+                                         
+
+                                         <mat-form-field class="field">
+                                            <textarea matInput placeholder="Address *" formControlName="address2" ></textarea>
+                                            <mat-error *ngIf="eiFormGroup.get('address2').invalid">You must enter address</mat-error>
+                                         </mat-form-field>
+                                          
+                                          <mat-form-field class="field" fxFlex>
+                                            <input matInput placeholder="City *" formControlName="city2" >
+                                     <mat-error *ngIf="eiFormGroup.get('city2').invalid">You must enter city</mat-error>
+                                          </mat-form-field>
+
+                                          <mat-form-field class="field" fxFlex>
+                                            <input type="text" matInput placeholder="State *" formControlName="state2"  [matAutocomplete]="autoGroup">
+                                              <mat-autocomplete #autoGroup="matAutocomplete">
+                                                <mat-optgroup *ngFor="let group of stateGroupOptions2 | async" [label]="group.letter">
+                                                  <mat-option *ngFor="let name of group.names" [value]="name">
+                                                    {{name}}
+                                                  </mat-option>
+                                              </mat-optgroup>
+                                            </mat-autocomplete>
+                                     <mat-error *ngIf="eiFormGroup.get('state2').invalid">You must enter state</mat-error>
+                                          </mat-form-field>
+
+                                          <mat-form-field class="field" fxFlex>
+                                            <input matInput type="number" #zipCode maxlength="5" placeholder="ZIP Code *" formControlName="zipcode2" >
+                                            <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+                                     <mat-error *ngIf="eiFormGroup.get('zipcode2').invalid">You must enter zipcode</mat-error>
+                                          </mat-form-field>
+                                          <mat-form-field class="field" fxFlex>
+                                            <input matInput type="number" placeholder="Years Attended *" formControlName="yearsattended2"  >
+                                            <mat-error *ngIf="eiFormGroup.get('yearsattended2').invalid">You must enter Years Attended</mat-error>
+                                          </mat-form-field>
+
+                                          <mat-form-field class="field" fxFlex>
+                                            <input matInput type="subjectstudied2" placeholder="Subject Studied *" formControlName="subjectstudied2"  >
+                                            <mat-error *ngIf="eiFormGroup.get('subjectstudied2').invalid">You must enter  Subject studied</mat-error>
+                                          </mat-form-field>
+
+                                          </div>
+
+                              <mat-action-row>
+                                <button mat-button color="warn" (click)="prevStep1()">Previous</button>
+                                <button mat-button *ngIf="eiFormGroup.get('leveselected').value>=3" color="primary" (click)="nextStep1()">Next</button>
+                              </mat-action-row>
+                            </mat-expansion-panel>
+
+                            <mat-expansion-panel *ngIf="eiFormGroup.get('leveselected').value>=3" [expanded]="step1 === 2" (opened)="setStep(2)"  hideToggle>
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                 COLLEGE
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                  <mat-icon>border_color</mat-icon>
+                                </mat-panel-description>
+                              </mat-expansion-panel-header>
+
+                                     <div class="container ajustar">
+                                       <mat-form-field class="field" fxFlex>
+                                          <input matInput type="nameschool3" placeholder="Name of School *" formControlName="nameschool3"  >
+                                          <mat-error *ngIf="eiFormGroup.get('nameschool3').invalid">You must enter  Name of School</mat-error>
+                                        </mat-form-field>
+
+                                          <mat-form-field class="field">
+                                              <textarea matInput placeholder="Address *" formControlName="address3" ></textarea>
+                                              <mat-error *ngIf="eiFormGroup.get('address3').invalid">You must enter address</mat-error>
+                                           </mat-form-field>
+                                            
+                                            <mat-form-field class="field" fxFlex>
+                                              <input matInput placeholder="City *" formControlName="city3" >
+                                       <mat-error *ngIf="eiFormGroup.get('city3').invalid">You must enter city</mat-error>
+                                            </mat-form-field>
+
+                                            <mat-form-field class="field" fxFlex>
+                                              <input type="text" matInput placeholder="State *" formControlName="state3"  [matAutocomplete]="autoGroup">
+                                                <mat-autocomplete #autoGroup="matAutocomplete">
+                                                  <mat-optgroup *ngFor="let group of stateGroupOptions3 | async" [label]="group.letter">
+                                                    <mat-option *ngFor="let name of group.names" [value]="name">
+                                                      {{name}}
+                                                    </mat-option>
+                                                </mat-optgroup>
+                                              </mat-autocomplete>
+                                       <mat-error *ngIf="eiFormGroup.get('state3').invalid">You must enter state</mat-error>
+                                            </mat-form-field>
+
+                                            <mat-form-field class="field" fxFlex>
+                                              <input matInput type="number" #zipCode maxlength="5" placeholder="ZIP Code *" formControlName="zipcode3" >
+                                              <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+                                       <mat-error *ngIf="eiFormGroup.get('zipcode3').invalid">You must enter zipcode</mat-error>
+                                            </mat-form-field>
+
+
+                                        <mat-form-field class="field" fxFlex>
+                                          <input matInput type="number" placeholder="Years Attended *" formControlName="yearsattended3"  >
+                                          <mat-error *ngIf="eiFormGroup.get('yearsattended3').invalid">You must enter Years Attended</mat-error>
+                                        </mat-form-field>
+
+                                        <mat-form-field class="field" fxFlex>
+                                          <input matInput type="subjectstudied3" placeholder="Subject Studied *" formControlName="subjectstudied3" >
+                                          <mat-error *ngIf="eiFormGroup.get('subjectstudied3').invalid">You must enter  Subject studied</mat-error>
+                                        </mat-form-field>
+
+
+                                      </div>
+
+                              <mat-action-row>
+                                <button mat-button color="warn" (click)="prevStep1()">Previous</button>
+                                <button *ngIf="eiFormGroup.get('leveselected').value>=4" mat-button color="primary" (click)="nextStep1()">Next</button>
+                              </mat-action-row>
+                            </mat-expansion-panel>
+
+                             <mat-expansion-panel *ngIf="eiFormGroup.get('leveselected').value>=4" [expanded]="step1 === 3" (opened)="setStep(3)" hideToggle>
+                              <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                  TRADE, OTHER SCHOOL
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                  <mat-icon>border_color</mat-icon>
+                                </mat-panel-description>
+                              </mat-expansion-panel-header>
+                                   <div class="container ajustar">
+                                      <mat-form-field class="field" fxFlex>
+                                          <input matInput type="nameschool4" placeholder="Name of School *" formControlName="nameschool4"  >
+                                          <mat-error *ngIf="eiFormGroup.get('nameschool4').invalid">You must enter  Name of School</mat-error>
+                                        </mat-form-field>
+
+                                           <mat-form-field class="field">
+                                              <textarea matInput placeholder="Address *" formControlName="address4" ></textarea>
+                                              <mat-error *ngIf="eiFormGroup.get('address4').invalid">You must enter address</mat-error>
+                                           </mat-form-field>
+                                            
+                                            <mat-form-field class="field" fxFlex>
+                                              <input matInput placeholder="City *" formControlName="city4" >
+                                       <mat-error *ngIf="eiFormGroup.get('city4').invalid">You must enter city</mat-error>
+                                            </mat-form-field>
+
+                                            <mat-form-field class="field" fxFlex>
+                                              <input type="text" matInput placeholder="State *" formControlName="state4"  [matAutocomplete]="autoGroup">
+                                                <mat-autocomplete #autoGroup="matAutocomplete">
+                                                  <mat-optgroup *ngFor="let group of stateGroupOptions4 | async" [label]="group.letter">
+                                                    <mat-option *ngFor="let name of group.names" [value]="name">
+                                                      {{name}}
+                                                    </mat-option>
+                                                </mat-optgroup>
+                                              </mat-autocomplete>
+                                       <mat-error *ngIf="eiFormGroup.get('state4').invalid">You must enter state</mat-error>
+                                            </mat-form-field>
+
+                                            <mat-form-field class="field" fxFlex>
+                                              <input matInput type="number" #zipCode maxlength="5" placeholder="ZIP Code *" formControlName="zipcode4" >
+                                              <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+                                       <mat-error *ngIf="eiFormGroup.get('zipcode4').invalid">You must enter zipcode</mat-error>
+                                            </mat-form-field>
+
+                                        <mat-form-field class="field" fxFlex>
+                                          <input matInput type="number" placeholder="Years Attended *" formControlName="yearsattended4" >
+                                          <mat-error *ngIf="eiFormGroup.get('yearsattended4').invalid">You must enter Years Attended</mat-error>
+                                        </mat-form-field>
+
+                                        <mat-form-field class="field" fxFlex>
+                                          <input matInput type="subjectstudied4" placeholder="Subject Studied *" formControlName="subjectstudied4" >
+                                          <mat-error *ngIf="eiFormGroup.get('subjectstudied4').invalid">You must enter  Subject studied</mat-error>
+                                        </mat-form-field>
+                                  
+                                      </div>
+
+
+
+                              <mat-action-row>
+                                <button mat-button color="warn" (click)="prevStep1()">Previous</button>
+                              </mat-action-row>
+                            </mat-expansion-panel>
+
+
+                          </mat-accordion>
+
+
+
+
+            
+                          
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext color="primary">Next</button>
+                </div>
+
+              </form>
+
+            </mat-step>
+
+    <mat-step [stepControl]="ehFormGroup">
+      <form [formGroup]="ehFormGroup">
+          <ng-template matStepLabel>Employment History</ng-template> 
+
+             
+              <div class="container">
+                
+               
+        
+                   <mat-checkbox (change)="resumechange($event)"  formControlName="resume" [(ngModel)]="resume" [(checked)]="checked">
+                      DO YOU HAVE A RESUME?
+                   </mat-checkbox>
+                 
+                
+
+
+               
+              </div>
+           
+          
+
+              <div  *ngIf="resume">  
+                                         
+
+                        <input type="file" accept="application/pdf" #file style="display: none" (change)="onFileAdded()" />
+
+                        <div *ngFor="let doc of docs">
+                        
+                              <mat-form-field class="field disabledDiv" fxFlex>
+                                <input matInput placeholder={{doc.name}} [value]="(doc.file)? doc.file.name: ''" formControlName="resumepdf">
+                                <mat-icon matSuffix *ngIf="uploadSuccessful || uploading">check</mat-icon>
+                              </mat-form-field>
+
+                              <mat-progress-spinner
+                                  *ngIf="progress"
+                                  color="primary"
+                                  mode="determinate"
+                                  [value]="progress[doc.name].progress | async"
+                                  diameter="40" >
+                              </mat-progress-spinner>
+                              
+                              <button *ngIf="!progress" mat-mini-fab color="primary" (click)="addFile(doc)">
+                                <mat-icon *ngIf="!doc.file">add</mat-icon>
+                                <mat-icon *ngIf="doc.file">edit</mat-icon>
+                              </button>
+
+                       
+                      </div>
+                      
+                      <!--<button mat-raised-button *ngIf="!(uploadSuccessful || uploading)" [disabled]="!isComplete" color="primary" (click)="upLoad()">
+                          Upload files
+                      </button>-->
+
+            </div>
+
+              <div class="container" *ngIf="!resume">
+
+
+
+                      <mat-accordion class="example-headers-align">
+                          <mat-expansion-panel [expanded]="step2 === 0" (opened)="setStep2(0)" hideToggle>
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                                Previous Job
+                              </mat-panel-title>
+                            </mat-expansion-panel-header>
+
+                                <div class="container ajustar">
+                                    <h1 class="desplazar">About you :</h1><br/>
+                                    <hr width="100%" noshade="noshade" />
+
+                                    <mat-form-field class="field" fxFlex>
+                                        <input matInput  type="from1" [min]="minDate" [max]="maxDate"  [matDatepicker]="from1" formControlName="from1" placeholder="FROM *"  (focus)="from1.open()" (click)="from1.open()" disabled>
+                                        <mat-datepicker-toggle matPrefix [for]="from1"></mat-datepicker-toggle>
+                                        <mat-datepicker disabled="false" touchUi #from1></mat-datepicker>
+                                        <mat-error *ngIf="ehFormGroup.get('from1').invalid">You must enter Date</mat-error>
+                                      </mat-form-field>
+                                 
+                                      <mat-form-field class="field" fxFlex>
+                                        <input matInput type="to1" [min]="minDate" [max]="maxDate"  [matDatepicker]="to1" formControlName="to1" placeholder="TO *"  (focus)="to1.open()" (click)="to1.open()" disabled>
+                                        <mat-datepicker-toggle matPrefix [for]="to1"></mat-datepicker-toggle>
+                                        <mat-datepicker disabled="false" touchUi #to1></mat-datepicker>
+                                        <mat-error *ngIf="ehFormGroup.get('to1').invalid">You must enter Date</mat-error>
+                                      </mat-form-field>
+
+                                      <mat-form-field class="field" fxFlex>
+                                        <input matInput type="position1" placeholder="Position *" formControlName="position1" >
+                                        <mat-error *ngIf="ehFormGroup.get('position1').invalid">You must enter  position</mat-error>
+                                      </mat-form-field>
+
+
+                                     <mat-form-field class="field">
+                                      <textarea matInput placeholder="Reason for Leaving *" formControlName="reasonleaving1" ></textarea>
+                                      <mat-error *ngIf="ehFormGroup.get('reasonleaving1').invalid">You must enter  reason for leaving</mat-error>
+                                   </mat-form-field>
+                                  
+
+                                      <h1 class="desplazar">About Employer :</h1><br/>
+                                      <hr width="100%" noshade="noshade" />
+
+                                      <mat-form-field class="field" fxFlex>
+                                        <input matInput type="nameemployer1" placeholder="Name of Employer *" formControlName="nameemployer1" >
+                                        <mat-error *ngIf="ehFormGroup.get('nameemployer1').invalid">You must enter  Name of Employer</mat-error>
+                                      </mat-form-field>
+
+
+
+                                       <mat-form-field class="field">
+                                          <textarea matInput placeholder="Address *" formControlName="address1" ></textarea>
+                                          <mat-error *ngIf="ehFormGroup.get('address1').invalid">You must enter addres</mat-error>
+                                       </mat-form-field>
+                                        
+                                        <mat-form-field class="field" fxFlex>
+                                          <input matInput placeholder="City *" formControlName="city1" >
+                                   <mat-error *ngIf="ehFormGroup.get('city1').invalid">You must enter city</mat-error>
+                                        </mat-form-field>
+
+                                        <mat-form-field class="field" fxFlex>
+                                          <input type="text" matInput placeholder="State *" formControlName="state1"  [matAutocomplete]="autoGroup">
+                                            <mat-autocomplete #autoGroup="matAutocomplete">
+                                              <mat-optgroup *ngFor="let group of stateGroupOptions5 | async" [label]="group.letter">
+                                                <mat-option *ngFor="let name of group.names" [value]="name">
+                                                  {{name}}
+                                                </mat-option>
+                                            </mat-optgroup>
+                                          </mat-autocomplete>
+                                   <mat-error *ngIf="ehFormGroup.get('state1').invalid">You must enter state</mat-error>
+                                        </mat-form-field>
+
+                                        <mat-form-field class="field" fxFlex>
+                                          <input matInput type="number" #zipCode maxlength="5" placeholder="ZIP Code *" formControlName="zipcode1" >
+                                          <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+                                   <mat-error *ngIf="ehFormGroup.get('zipcode1').invalid">You must enter zipcode</mat-error>
+                                        </mat-form-field>
+                                    
+                                   <mat-form-field class="field" fxFlex>
+                                        <input matInput  placeholder="Attention *" formControlName="attention1" >
+                                        <mat-error *ngIf="ehFormGroup.get('attention1').invalid">You must enter Attention</mat-error>
+                                    </mat-form-field>
+                                    
+                                    <mat-form-field class="field" fxFlex>
+                                          <span matPrefix>+1 &nbsp;</span>
+                                          <input  matInput type="number"  maxlength="10"   placeholder="Phone" formControlName="phone1"  >
+                                          <mat-icon matSuffix>phone</mat-icon>                                        
+                                          <mat-error *ngIf="ehFormGroup.get('phone1').invalid">
+                                            You must enter phone              
+                                          </mat-error>
+                                           <mat-hint align="end">{{(ehFormGroup.get('phone1').value+"").length}} / 10</mat-hint>
+                                      </mat-form-field>
+
+                                      <mat-form-field class="field" fxFlex>
+                                        <span matPrefix>+1 &nbsp;</span>
+                                        <input  matInput type="number"  maxlength="10"   placeholder="Fax" formControlName="fax1"  >
+                                        <mat-icon matSuffix>fax</mat-icon>
+                                       
+                                        <mat-error *ngIf="ehFormGroup.get('fax1').invalid">
+                                          You must enter fax              
+                                        </mat-error>
+                                         <mat-hint align="end">{{(ehFormGroup.get('fax1').value+"").length}} / 10</mat-hint>
+                                      </mat-form-field>
+
+                                </div>
+                           
+
+                            <mat-action-row>
+                              <button mat-raised-button *ngIf="step2 == work" color="warn" (click)="add()">Add<mat-icon>add</mat-icon></button>
+                              <button mat-raised-button *ngIf="step2 < work" color="primary" (click)="nextStep2()">Next<mat-icon>arrow_downward</mat-icon></button>
+                            </mat-action-row>
+                          </mat-expansion-panel>
+
+                          
+
+
+                          <mat-expansion-panel *ngIf="work > 0" [expanded]="step2 === 1" (opened)="setStep2(1)" hideToggle>
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                                Previous Job
+                              </mat-panel-title>
+                            </mat-expansion-panel-header>
+
+                                  <div class="container ajustar">
+                                    <h1 class="desplazar">About you :</h1>
+                                    <hr width="100%" noshade="noshade" />
+
+                                      <mat-form-field class="field" fxFlex>
+                                          <input matInput type="from2" [min]="minDate" [max]="maxDate"  [matDatepicker]="from2" formControlName="from2" placeholder="FROM *"  (focus)="from2.open()" (click)="from2.open()" >
+                                          <mat-datepicker-toggle matPrefix [for]="from2"></mat-datepicker-toggle>
+                                          <mat-datepicker disabled="false" touchUi #from2></mat-datepicker>
+                                           <mat-error *ngIf="ehFormGroup.get('from2').invalid">You must enter Date</mat-error>
+                                        </mat-form-field>
+                                   
+                                        <mat-form-field class="field" fxFlex>
+                                          <input matInput type="to2" [min]="minDate" [max]="maxDate"  [matDatepicker]="to2" formControlName="to2" placeholder="TO *"  (focus)="to2.open()" (click)="to2.open()" >
+                                          <mat-datepicker-toggle matPrefix [for]="to2"></mat-datepicker-toggle>
+                                          <mat-datepicker disabled="false" touchUi #to2></mat-datepicker>
+                                          <mat-error *ngIf="ehFormGroup.get('to2').invalid">You must enter Date</mat-error>
+                                        </mat-form-field>
+
+                                         <mat-form-field class="field" fxFlex>
+                                          <input matInput type="position2" placeholder="Position *" formControlName="position2" >
+                                          <mat-error *ngIf="ehFormGroup.get('position2').invalid">You must enter  position</mat-error>
+                                        </mat-form-field>
+
+                                         <mat-form-field class="field">
+                                        <textarea matInput placeholder="Reason for Leaving *" formControlName="reasonleaving2" ></textarea>
+                                        <mat-error *ngIf="ehFormGroup.get('reasonleaving2').invalid">You must enter  reason for leaving</mat-error>
+                                     </mat-form-field>
+
+                                        <h1 class="desplazar">About Employer :</h1>
+                                        <hr width="100%" noshade="noshade" />
+
+                                        <mat-form-field class="field" fxFlex>
+                                          <input matInput type="nameemployer2" placeholder="Name of Employer *" formControlName="nameemployer2" >
+                                          <mat-error *ngIf="ehFormGroup.get('nameemployer2').invalid">You must enter  Name of Employer</mat-error>
+                                        </mat-form-field>
+
+                                                  <mat-form-field class="field">
+                                                    <textarea matInput placeholder="Address *" formControlName="address2" ></textarea>
+                                                    <mat-error *ngIf="ehFormGroup.get('address2').invalid">You must enter addres</mat-error>
+                                                 </mat-form-field>
+                                                  
+                                                  <mat-form-field class="field" fxFlex>
+                                                    <input matInput placeholder="City *" formControlName="city2" >
+                                             <mat-error *ngIf="ehFormGroup.get('city2').invalid">You must enter city</mat-error>
+                                                  </mat-form-field>
+
+                                                  <mat-form-field class="field" fxFlex>
+                                                    <input type="text" matInput placeholder="State *" formControlName="state2"  [matAutocomplete]="autoGroup">
+                                                      <mat-autocomplete #autoGroup="matAutocomplete">
+                                                        <mat-optgroup *ngFor="let group of stateGroupOptions6 | async" [label]="group.letter">
+                                                          <mat-option *ngFor="let name of group.names" [value]="name">
+                                                            {{name}}
+                                                          </mat-option>
+                                                      </mat-optgroup>
+                                                    </mat-autocomplete>
+                                             <mat-error *ngIf="ehFormGroup.get('state2').invalid">You must enter state</mat-error>
+                                                  </mat-form-field>
+
+                                                  <mat-form-field class="field" fxFlex>
+                                                    <input matInput type="number" #zipCode maxlength="5" placeholder="ZIP Code *" formControlName="zipcode2" >
+                                                    <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+                                             <mat-error *ngIf="ehFormGroup.get('zipcode2').invalid">You must enter zipcode</mat-error>
+                                                  </mat-form-field>
+                                    <mat-form-field class="field" fxFlex>
+                                        <input matInput  placeholder="Attention *" formControlName="attention2" >
+                                        <mat-error *ngIf="ehFormGroup.get('attention2').invalid">You must enter Attention</mat-error>
+                                    </mat-form-field>
+                                    
+                                     <mat-form-field class="field" fxFlex>
+                                          <span matPrefix>+1 &nbsp;</span>
+                                          <input  matInput type="number"  maxlength="10"   placeholder="Phone" formControlName="phone2"  >
+                                          <mat-icon matSuffix>phone</mat-icon>                                          
+                                          <mat-error *ngIf="ehFormGroup.get('phone2').invalid">
+                                            You must enter phone              
+                                          </mat-error>
+                                           <mat-hint align="end">{{(ehFormGroup.get('phone2').value+"").length}} / 10</mat-hint>
+                                      </mat-form-field>
+
+                                      <mat-form-field class="field" fxFlex>
+                                        <span matPrefix>+1 &nbsp;</span>
+                                        <input  matInput type="number"  maxlength="10"   placeholder="Fax" formControlName="fa23"  >
+                                        <mat-icon matSuffix>fax</mat-icon>
+                                       
+                                        <mat-error *ngIf="ehFormGroup.get('fax2').invalid">
+                                          You must enter fax              
+                                        </mat-error>
+                                         <mat-hint align="end">{{(ehFormGroup.get('fax2').value+"").length}} / 10</mat-hint>
+                                      </mat-form-field>
+                                      
+                                  </div>
+
+                            <mat-action-row >                                                            
+                              <button mat-raised-button *ngIf="step2  == work" color="warn" (click)="del()">Delete<mat-icon>clear</mat-icon></button>&nbsp;&nbsp;
+                              <button mat-raised-button *ngIf="step2  == work" color="warn" (click)="add()">Add<mat-icon>add</mat-icon></button>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <button mat-raised-button color="primary" (click)="prevStep2()">Previous<mat-icon>arrow_upward</mat-icon></button>&nbsp;&nbsp;
+                              <button mat-raised-button *ngIf="step2 < work" color="primary" (click)="nextStep2()">Next<mat-icon>arrow_downward</mat-icon></button>
+                            </mat-action-row>
+                          </mat-expansion-panel>
+
+                           <mat-expansion-panel *ngIf="work > 1" [expanded]="step2 === 2" (opened)="setStep2(2)" hideToggle>
+                            <mat-expansion-panel-header>
+                              <mat-panel-title>
+                                Previous Job
+                              </mat-panel-title>
+                            </mat-expansion-panel-header>
+
+                                  
+                                     <div class="container ajustar">
+
+                                      <h1 class="desplazar">About you :</h1>
+                                      <hr width="100%" noshade="noshade" />
+                                                  
+                                        <mat-form-field class="field" fxFlex>
+                                            <input matInput type="from3" [min]="minDate" [max]="maxDate"  [matDatepicker]="from3" formControlName="from3" placeholder="FROM *"  (focus)="from3.open()" (click)="from3.open()" >
+                                            <mat-datepicker-toggle matPrefix [for]="from3"></mat-datepicker-toggle>
+                                            <mat-datepicker disabled="false"  touchUi #from3></mat-datepicker>
+                                             <mat-error *ngIf="ehFormGroup.get('from3').invalid">You must enter Date</mat-error>
+                                          </mat-form-field>
+                                     
+                                          <mat-form-field class="field" fxFlex>
+                                            <input matInput type="to3" [min]="minDate" [max]="maxDate"  [matDatepicker]="to3" formControlName="to3" placeholder="TO *"  (focus)="to3.open()" (click)="to3.open()" >
+                                            <mat-datepicker-toggle matPrefix [for]="to3"></mat-datepicker-toggle>
+                                            <mat-datepicker disabled="false"  touchUi #to3></mat-datepicker>
+                                            <mat-error *ngIf="ehFormGroup.get('to3').invalid">You must enter Date</mat-error>
+                                          </mat-form-field>
+
+                                           <mat-form-field class="field" fxFlex>
+                                            <input matInput type="position3" placeholder="Position *" formControlName="position3" >
+                                            <mat-error *ngIf="ehFormGroup.get('position3').invalid">You must enter  position</mat-error>
+                                          </mat-form-field>
+
+                                          <mat-form-field class="field">
+                                          <textarea matInput placeholder="Reason for Leaving *" formControlName="reasonleaving3" ></textarea>
+                                          <mat-error *ngIf="ehFormGroup.get('reasonleaving3').invalid">You must enter  reason for leaving</mat-error>
+                                         </mat-form-field>
+
+
+                                          <h1 class="desplazar">About Employer :</h1>
+                                          <hr width="100%" noshade="noshade" />
+                                          
+                                          <mat-form-field class="field" fxFlex>
+                                            <input matInput type="nameemployer3" placeholder="Name of Employer *" formControlName="nameemployer3" >
+                                            <mat-error *ngIf="ehFormGroup.get('nameemployer3').invalid">You must enter  Name of Employer</mat-error>
+                                          </mat-form-field>
+
+                                            <mat-form-field class="field">
+                                                <textarea matInput placeholder="Address *" formControlName="address3" ></textarea>
+                                                <mat-error *ngIf="ehFormGroup.get('address3').invalid">You must enter address</mat-error>
+                                             </mat-form-field>
+                                              
+                                              <mat-form-field class="field" fxFlex>
+                                                <input matInput placeholder="City *" formControlName="city3" >
+                                         <mat-error *ngIf="ehFormGroup.get('city3').invalid">You must enter city</mat-error>
+                                              </mat-form-field>
+
+                                              <mat-form-field class="field" fxFlex>
+                                                <input type="text" matInput placeholder="State *" formControlName="state3" [matAutocomplete]="autoGroup">
+                                                  <mat-autocomplete #autoGroup="matAutocomplete">
+                                                    <mat-optgroup *ngFor="let group of stateGroupOptions7 | async" [label]="group.letter">
+                                                      <mat-option *ngFor="let name of group.names" [value]="name">
+                                                        {{name}}
+                                                      </mat-option>
+                                                  </mat-optgroup>
+                                                </mat-autocomplete>
+                                         <mat-error *ngIf="ehFormGroup.get('state3').invalid">You must enter state</mat-error>
+                                              </mat-form-field>
+
+                                              <mat-form-field class="field" fxFlex>
+                                                <input matInput type="number" #zipCode maxlength="5" placeholder="ZIP Code *" formControlName="zipcode3" >
+                                                <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+                                         <mat-error *ngIf="ehFormGroup.get('zipcode3').invalid">You must enter zipcode</mat-error>
+                                              </mat-form-field>   
+
+                                         
+
+                                       <mat-form-field class="field" fxFlex>
+                                            <input matInput  placeholder="Attention *" formControlName="attention3" >
+                                            <mat-error *ngIf="ehFormGroup.get('attention3').invalid">You must enter Attention</mat-error>
+                                        </mat-form-field>
+                                        
+                                        <mat-form-field class="field" fxFlex>
+                                          <span matPrefix>+1 &nbsp;</span>
+                                          <input  matInput type="number"  maxlength="10"   placeholder="Phone" formControlName="phone3"  >
+                                          <mat-icon matSuffix>phone</mat-icon>
+                                         
+                                          <mat-error *ngIf="ehFormGroup.get('phone3').invalid">
+                                            You must enter phone              
+                                          </mat-error>
+                                           <mat-hint align="end">{{(ehFormGroup.get('phone3').value+"").length}} / 10</mat-hint>
+                                      </mat-form-field>
+
+                                      <mat-form-field class="field" fxFlex>
+                                        <span matPrefix>+1 &nbsp;</span>
+                                        <input  matInput type="number"  maxlength="10"   placeholder="Fax" formControlName="fax3"  >
+                                        <mat-icon matSuffix>fax</mat-icon>
+                                       
+                                        <mat-error *ngIf="ehFormGroup.get('fax3').invalid">
+                                          You must enter fax              
+                                        </mat-error>
+                                         <mat-hint align="end">{{(ehFormGroup.get('fax3').value+"").length}} / 10</mat-hint>
+                                      </mat-form-field>
+                                          
+                                            
+                                    </div>
+
+                            <mat-action-row >
+                              <button mat-raised-button color="warn" (click)="del()">Delete<mat-icon>clear</mat-icon></button>  
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <button mat-raised-button  color="primary" (click)="prevStep2()">Previous<mat-icon>arrow_upward</mat-icon></button>                          
+                              
+                            </mat-action-row>
+                          </mat-expansion-panel>
+
+
+                        </mat-accordion>
+                   
+                    
+              </div>
+
+              <div>
+                <button mat-button matStepperPrevious color="warn">Back</button>
+
+                <button *ngIf="resume" mat-button matStepperNext color="primary" [disabled]="!isComplete" >Next</button>
+
+                <button *ngIf="!resume" mat-button matStepperNext color="primary" >Next</button>
+              </div>
+
+          </form>
+    </mat-step>
+
+
+
+   
+    <mat-step>
+      <ng-template matStepLabel>Save and Next</ng-template>
+      <p>
+        You are now done.<br><br>
+       <label class='red'>When you press save and next you will not be able to edit the information send.</label> 
+      </p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="onSubmit()">Save and Next</button>
+      </div>
+   
+    </mat-step>
+  
+  </mat-vertical-stepper>
+</mat-card>

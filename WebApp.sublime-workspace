@@ -1,0 +1,947 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"up",
+				"upLoad"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"e",
+				"exemptpayeev"
+			],
+			[
+				"ot",
+				"othert"
+			],
+			[
+				"t",
+				"this"
+			],
+			[
+				"bo",
+				"button\tTag"
+			],
+			[
+				"H",
+				"higth"
+			],
+			[
+				"el",
+				"element"
+			],
+			[
+				"ch",
+				"checkStep"
+			],
+			[
+				"if",
+				"if\tif"
+			],
+			[
+				"pos",
+				"poscurrent"
+			],
+			[
+				"st",
+				"step"
+			],
+			[
+				"un",
+				"undefined"
+			],
+			[
+				"sub",
+				"substring"
+			],
+			[
+				"lo",
+				"log"
+			],
+			[
+				"OT",
+				"otheraddress"
+			],
+			[
+				"ne",
+				"nextStep1"
+			],
+			[
+				"pdf",
+				"pdf-viewer"
+			],
+			[
+				"readonly",
+				"readonly\tAttr"
+			],
+			[
+				"re",
+				"resume"
+			],
+			[
+				"i",
+				"identity"
+			],
+			[
+				"para",
+				"params"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"req",
+				"require"
+			],
+			[
+				"addr",
+				"address"
+			],
+			[
+				"fi",
+				"field"
+			],
+			[
+				"fo",
+				"form\tTag"
+			],
+			[
+				"li",
+				"link\tTag"
+			],
+			[
+				"al",
+				"align-items\tproperty"
+			],
+			[
+				"co",
+				"content"
+			],
+			[
+				"to",
+				"toggle\tmethod"
+			],
+			[
+				"col",
+				"color\tproperty"
+			],
+			[
+				"u",
+				"uploading\tproperty"
+			],
+			[
+				"d",
+				"docsCount\tproperty"
+			],
+			[
+				"fli",
+				"fill"
+			],
+			[
+				"MatP",
+				"MatProgressBar\tclass"
+			],
+			[
+				"n",
+				"name\tproperty"
+			],
+			[
+				"p",
+				"position\tproperty"
+			],
+			[
+				"s",
+				"specialitiesToFields\tmethod"
+			],
+			[
+				"a",
+				"ApplyForFormGroup\tproperty"
+			],
+			[
+				"do",
+				"DoCheck\talias"
+			],
+			[
+				"ma",
+				"margin\tproperty"
+			],
+			[
+				"pa",
+				"padding\tproperty"
+			],
+			[
+				"is",
+				"isLoginned\tproperty"
+			],
+			[
+				"MatSte",
+				"MatStepperModule\tclass"
+			],
+			[
+				"V",
+				"ValidatorFn\talias"
+			],
+			[
+				"Sta",
+				"StateUsControls\tclass"
+			],
+			[
+				"_",
+				"_filterGroup\tmethod"
+			],
+			[
+				"for",
+				"FormControl\talias"
+			],
+			[
+				"setV",
+				"setValue\tmethod"
+			],
+			[
+				"se",
+				"setErrors\tmethod"
+			],
+			[
+				"va",
+				"value\tproperty"
+			],
+			[
+				"cont",
+				"control\tparameter"
+			],
+			[
+				"sta",
+				"stateGroupOptions\tproperty"
+			],
+			[
+				"St",
+				"StateGroup\tinterface"
+			],
+			[
+				"po",
+				"postalCode\tproperty"
+			],
+			[
+				"c",
+				"city\tproperty"
+			],
+			[
+				"C",
+				"Controls\talias"
+			],
+			[
+				"o",
+				"openDialog\tmethod"
+			],
+			[
+				"en",
+				"enable\tmethod"
+			],
+			[
+				"Fo",
+				"FormGroup\talias"
+			],
+			[
+				"set",
+				"setParent\tmethod"
+			],
+			[
+				"get",
+				"get\tmethod"
+			],
+			[
+				"ba",
+				"background\tproperty"
+			],
+			[
+				"tr",
+				"true\tkeyword"
+			],
+			[
+				"fa",
+				"false\tkeyword"
+			],
+			[
+				"sw",
+				"swing\talias"
+			],
+			[
+				"swi",
+				"swing\tproperty"
+			],
+			[
+				"pr",
+				"primary"
+			],
+			[
+				"si",
+				"font-size\tproperty"
+			],
+			[
+				"fl",
+				"flag\tlocal var"
+			],
+			[
+				"conso",
+				"console\tvar"
+			],
+			[
+				"val",
+				"value\tproperty"
+			],
+			[
+				"fla",
+				"false\tkeyword"
+			],
+			[
+				"Ng",
+				"NgModel\talias"
+			],
+			[
+				"g",
+				"get\tmethod"
+			],
+			[
+				"MatForm",
+				"MatFormFieldControl\tclass"
+			],
+			[
+				"h",
+				"height\tproperty"
+			],
+			[
+				"Form",
+				"FormControl\talias"
+			],
+			[
+				"text-a",
+				"text-align\tproperty"
+			],
+			[
+				"background-c",
+				"background-color\tproperty"
+			],
+			[
+				"max",
+				"max-width\tproperty"
+			],
+			[
+				"tex",
+				"text-decoration\tproperty"
+			],
+			[
+				"in",
+				"inline\tdisplay"
+			],
+			[
+				"box",
+				"box-shadow\tproperty"
+			],
+			[
+				"Gl",
+				"GLOBAL\talias"
+			],
+			[
+				"ti",
+				"title2\tproperty"
+			],
+			[
+				"mar",
+				"margin\tproperty"
+			],
+			[
+				"marg",
+				"margin-top\tproperty"
+			],
+			[
+				"min",
+				"min-height\tproperty"
+			],
+			[
+				"im",
+				"important"
+			],
+			[
+				"MatGr",
+				"MatGridTile\tclass"
+			],
+			[
+				"MatI",
+				"MatInput\tclass"
+			],
+			[
+				"stat",
+				"stateGroups\tproperty"
+			],
+			[
+				"background-",
+				"background-size\tproperty"
+			],
+			[
+				"background",
+				"background\tproperty"
+			],
+			[
+				"Mat",
+				"MatCard\tclass"
+			],
+			[
+				"wi",
+				"width\tproperty"
+			],
+			[
+				"MatS",
+				"MatSidenav\tclass"
+			],
+			[
+				"b",
+				"background\tproperty"
+			],
+			[
+				"Bro",
+				"BrowserModule\talias"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"an",
+				"angular-material"
+			],
+			[
+				"me",
+				"message\tproperty"
+			],
+			[
+				"res",
+				"result\tparameter"
+			],
+			[
+				"F",
+				"filesToUpload\tproperty"
+			],
+			[
+				"x",
+				"xhr\tlocal var"
+			],
+			[
+				"XML",
+				"XMLHttpRequest\tvar"
+			],
+			[
+				"ret",
+				"return\tkeyword"
+			],
+			[
+				"G",
+				"GLOBAL\talias"
+			],
+			[
+				"In",
+				"Injectable\talias"
+			],
+			[
+				"Htt",
+				"HttpHeaders\talias"
+			],
+			[
+				"O",
+				"Observable\talias"
+			],
+			[
+				"dro",
+				"dropdown-menu"
+			],
+			[
+				"navbar",
+				"navbar-right"
+			],
+			[
+				"Do",
+				"DoCheck\talias"
+			],
+			[
+				"On",
+				"OnInit\talias"
+			],
+			[
+				"id",
+				"identity"
+			],
+			[
+				"I",
+				"identity\tproperty"
+			],
+			[
+				"ni",
+				"nickOrEmail"
+			],
+			[
+				"path",
+				"path_file"
+			],
+			[
+				"ex",
+				"exists"
+			],
+			[
+				"ima",
+				"imageFile"
+			],
+			[
+				"file",
+				"file_name"
+			],
+			[
+				"fil",
+				"file_path"
+			],
+			[
+				"file_",
+				"file_split"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "angular/src/app/components/step-form/w9-information/w9-information.component.ts",
+			"settings":
+			{
+				"buffer_size": 10123,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "angular/src/app/components/step-form/w9-information/w9-information.component.html",
+			"settings":
+			{
+				"buffer_size": 8520,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"inst",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/Francisco/proy/9/WebApp",
+		"/E/Francisco/proy/9/WebApp/angular",
+		"/E/Francisco/proy/9/WebApp/angular/src",
+		"/E/Francisco/proy/9/WebApp/angular/src/app",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/ahca-information",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/app-employ",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/emergency-information",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/job-information",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/pdf",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/upload-document",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/w9-information",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/models",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/services",
+		"/E/Francisco/proy/9/WebApp/nodejs",
+		"/E/Francisco/proy/9/WebApp/nodejs/api",
+		"/E/Francisco/proy/9/WebApp/nodejs/api/controllers",
+		"/E/Francisco/proy/9/WebApp/nodejs/api/forms",
+		"/E/Francisco/proy/9/WebApp/nodejs/api/middlewares",
+		"/E/Francisco/proy/9/WebApp/nodejs/api/models",
+		"/E/Francisco/proy/9/WebApp/nodejs/api/routes",
+		"/E/Francisco/proy/9/WebApp/nodejs/api/uploads",
+		"/E/Francisco/proy/9/WebApp/nodejs/api/uploads/resume"
+	],
+	"file_history":
+	[
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/w9-information/w9-information.component.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/upload-document/upload-document.component.html",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/w9-information/w9-information.component.html",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/ahca-information/ahca-information.component.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/ahca-information/ahca-information.component.html",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/emergency-information/emergency-information.component.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/emergency-information/emergency-information.component.html",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/upload-document/upload-document.component.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/job-information/job-information.component.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/services/upload.service.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/services/user.service.ts",
+		"/E/Francisco/proy/9/WebApp/nodejs/api/controllers/user.js",
+		"/E/Francisco/proy/9/WebApp/nodejs/api/routes/user.js",
+		"/E/Francisco/proy/9/WebApp/nodejs/api/uploads/users/upload_1d77c0849f180657b056ca3f9db023ee.pdf",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/job-information/job-information.component.html",
+		"/E/Francisco/proy/9/WebApp/nodejs/api/models/user.js",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/models/user.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/app.component.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/app.module.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/app.routing.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/pdf/pdf.component.html",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.html",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/pdf/pdf.component.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/step-form.component.css",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/w9-information/dialog.component.html",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/components.utils/utils.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/services/upload.service.spec.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/components.utils/controls.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/main-nav/main-nav.component.html",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/main-nav/main-nav.component.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/main-nav/nav-list/nav-list.component.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/main-nav/nav-list/nav-list.component.html",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/login/login.component.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/main-nav/main-nav.component.spec.ts",
+		"/C/Users/informatico1.CARIBETROPICAL/Desktop/rr/app/components/step-form/ahca-information/ahca-information.component.html",
+		"/C/Users/informatico1.CARIBETROPICAL/Desktop/rr/app/components/step-form/ahca-information/ahca-information.component.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/w9-information/dialog/dialog.component.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/other-information/other-information.component.ts",
+		"/E/Francisco/proy/9/WebApp/angular/src/app/components/step-form/other-information/other-information.component.html",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/services/user.service.ts",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/models/user.ts",
+		"/E/Francisco/proy/8/WebApp/nodejs/api/controllers/user.js",
+		"/E/Francisco/proy/8/WebApp/nodejs/api/routes/user.js",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/components/step-form/job-information/job-information.component.ts",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/components/step-form/job-information/job-information.component.html",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.html",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.ts",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/components/step-form/other-information/other-information.component.html",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/components/step-form/other-information/other-information.component.ts",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/app.routing.ts",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/app.module.ts",
+		"/E/Francisco/proy/8/WebApp/nodejs/api/models/user.js",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/components/step-form/pdf/pdf.component.ts",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/components/login/login.component.ts",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/components/step-form/emergency-information/emergency-information.component.ts",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/components/login/login.component.html",
+		"/E/Francisco/proy/8/WebApp/angular/src/app/components/login/login.component.css",
+		"/E/Francisco/proy/7/WebApp/angular/src/app/components/step-form/job-information/job-information.component.ts",
+		"/E/Francisco/proy/7/WebApp/angular/src/app/components/step-form/job-information/job-information.component.html",
+		"/E/Francisco/proy/7/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.ts",
+		"/E/Francisco/proy/7/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.html",
+		"/D/proyecto/Ultimo6/WebApp/nodejs/api/models/user.js",
+		"/D/proyecto/Ultimo6/WebApp/nodejs/api/controllers/user.js",
+		"/D/proyecto/Ultimo6/WebApp/angular/src/app/components/step-form/emergency-information/emergency-information.component.ts",
+		"/D/proyecto/Ultimo6/WebApp/angular/src/app/components/step-form/emergency-information/emergency-information.component.html",
+		"/D/proyecto/Ultimo6/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.html",
+		"/D/proyecto/Ultimo6/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.ts",
+		"/D/proyecto/Ultimo6/WebApp/run.bat",
+		"/E/Francisco/proy/WebApp/nodejs/api/controllers/user.js",
+		"/E/Francisco/proy/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.html",
+		"/E/Francisco/proy/WebApp/angular/src/app/components/step-form/job-information/job-information.component.html",
+		"/E/Francisco/proy/WebApp/angular/src/app/components/step-form/step-form.component.css",
+		"/E/Francisco/proy/WebApp/angular/src/app/components/step-form/job-information/job-information.component.ts",
+		"/E/Francisco/proy/WebApp/angular/src/app/components/step-form/emergency-information/emergency-information.component.ts",
+		"/E/Francisco/proy/WebApp/angular/src/app/components/step-form/emergency-information/emergency-information.component.html",
+		"/E/Francisco/proy/WebApp/nodejs/api/package.json",
+		"//10.12.53.30/c$/Users/Administrador/.npmrc",
+		"/D/Proyectos/Hector/ultimo4/WebApp/angular/src/app/components/step-form/job-information/job-information.component.html",
+		"/D/Proyectos/Hector/ultimo4/WebApp/angular/src/app/models/user.ts",
+		"/D/Proyectos/Hector/ultimo4/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.ts",
+		"/D/Proyectos/Hector/ultimo4/WebApp/nodejs/api/models/user.js",
+		"/D/Proyectos/Hector/ultimo4/WebApp/angular/src/app/app.module.ts",
+		"/D/Proyectos/Hector/ultimo4/WebApp/angular/src/app/components/step-form/emergency-information/emergency-information.component.html",
+		"/D/Proyectos/Hector/ultimo4/WebApp/angular/src/app/components/step-form/job-information/job-information.component.ts",
+		"/D/Proyectos/Hector/ultimo4/WebApp/angular/src/app/components/step-form/pdf/pdf.component.ts",
+		"/D/Proyectos/Hector/descargas/material/1/proyectos/xvgeddekxdq.angular/src/app/expansion-overview-example.css",
+		"/D/Proyectos/Hector/descargas/material/1/proyectos/xvgeddekxdq.angular/src/app/expansion-overview-example.ts",
+		"/D/Proyectos/Hector/descargas/material/1/proyectos/xvgeddekxdq.angular/src/app/expansion-overview-example.html",
+		"/D/Proyectos/Hector/ultimo4/WebApp/angular/src/app/app.routing.ts",
+		"/D/Proyectos/Hector/ultimo4/WebApp/angular/src/app/components/step-form/pdf/pdf.component.html",
+		"/D/Proyectos/Hector/ultimo4/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.html",
+		"/D/Proyectos/Hector/ultimo4/WebApp/nodejs/api/controllers/user.js",
+		"/D/Proyectos/Hector/ultimo4/WebApp/angular/src/app/components/step-form/emergency-information/emergency-information.component.ts",
+		"/D/proyecto/ultimo3/WebApp/angular/src/app/models/user.ts",
+		"/D/proyecto/ultimo3/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.html",
+		"/D/proyecto/ultimo3/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.ts",
+		"/D/proyecto/ultimo3/WebApp/angular/src/app/components/step-form/job-information/job-information.component.ts",
+		"/D/proyecto/ultimo3/WebApp/angular/src/app/components/step-form/job-information/job-information.component.html",
+		"/D/proyecto/ultimo3/WebApp/angular/src/app/components/step-form/pdf/pdf.component.html",
+		"/D/proyecto/ultimo3/WebApp/angular/src/app/components/step-form/emergency-information/emergency-information.component.html",
+		"/D/Proyectos/Hector/Ultimo2/WebApp/nodejs/api/controllers/user.js",
+		"/D/Proyectos/Hector/Ultimo2/WebApp/WebApp.sublime-workspace",
+		"/D/Proyectos/Hector/Ultimo2/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.html",
+		"/D/Proyectos/Hector/Ultimo2/WebApp/angular/src/app/components/step-form/job-information/job-information.component.ts",
+		"/D/Proyectos/Hector/Ultimo2/WebApp/angular/src/app/components/step-form/job-information/job-information.component.html",
+		"/D/Proyectos/Hector/Ultimo2/WebApp/angular/src/app/components/step-form/app-employ/app-employ.component.ts",
+		"/D/Proyectos/Hector/Ultimo2/WebApp/angular/src/app/app.module.ts",
+		"/D/Proyectos/Hector/descargas/material/1/proyectos/eyaqvjlqvmy.angular/src/polyfills.ts",
+		"/D/Proyectos/Hector/descargas/material/1/proyectos/eyaqvjlqvmy.angular/src/material-module.ts",
+		"/D/Proyectos/Hector/descargas/material/1/proyectos/eyaqvjlqvmy.angular/src/main.ts",
+		"/D/Proyectos/Hector/descargas/material/1/proyectos/eyaqvjlqvmy.angular/src/app/radio-ng-model-example.html",
+		"/D/Proyectos/Hector/descargas/material/1/proyectos/eyaqvjlqvmy.angular/src/app/radio-ng-model-example.ts",
+		"/D/Proyectos/Hector/Ultimo2/WebApp/angular/src/app/models/user.ts",
+		"/D/Proyectos/Hector/descargas/material/1/proyectos/eyaqvjlqvmy.angular/src/app/radio-ng-model-example.css",
+		"/D/Proyectos/Hector/Ultimo2/WebApp/angular/src/app/components/step-form/pdf/pdf.component.ts",
+		"/D/Proyectos/Hector/Ultimo2/WebApp/angular/src/app/components/step-form/pdf/pdf.component.html",
+		"/D/Proyectos/Hector/Ultimo2/WebApp/nodejs/api/models/user.js",
+		"/D/Proyectos/Hector/Ultimo2/WebApp/nodejs/api/routes/user.js",
+		"/D/Proyectos/Hector/Ultimo2/WebApp/angular/src/app/services/user.service.ts",
+		"/D/proyecto/WebApp/angular/src/app/components/login/login.component.ts",
+		"/D/proyecto/WebApp/angular/src/app/app.routing.ts",
+		"/D/proyecto/WebApp/angular/src/app/app.module.ts",
+		"/D/proyecto/WebApp/angular/src/app/components/step-form/pdf/pdf.component.html",
+		"/D/proyecto/WebApp/nodejs/api/controllers/user.js",
+		"/D/proyecto/WebApp/angular/src/app/components/step-form/job-information/job-information.component.html",
+		"/D/proyecto/WebApp/angular/src/app/components/step-form/job-information/job-information.component.ts",
+		"/D/proyecto/WebApp/nodejs/api/models/user.js"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"D:\\WebApp"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"user.personal_information==undefined?' ':",
+			"paramas",
+			"Date",
+			"string",
+			"personal_information",
+			"checked",
+			"User",
+			";",
+			"pdf",
+			"User",
+			"UserController",
+			"cesar",
+			"eldercare",
+			"test",
+			"component"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"JSON.stringify(user.personal_information) === '{}'? ' ':",
+			"params",
+			": string;\n\nvar express = require('express');\nvar UserController = require('../controllers/user');\n\nvar api = express.Router();\nvar md_auth = require('../middlewares/authenticated');\n\nvar multiparty = require('connect-multiparty');\nvar md_upload = multiparty({uploadDir: './uploads/users'});\n\napi.post('/register', UserController.saveUser);\napi.post('/login', UserController.loginUser);\napi.get('/user/:id', md_auth.ensureAuth, UserController.getUser);\napi.get('/users/:page?/:itemsPerPage?', md_auth.ensureAuth, UserController.getUsers);\napi.put('/update-user/:id', md_auth.ensureAuth, UserController.updateUser);\napi.post('/upload-image-user/:id', [md_auth.ensureAuth, md_upload], UserController.uploadImage);\napi.post('/upload/:id/:id_doc', UserController.upload);\napi.get('/get-image-user/:imageFile', [md_auth.ensureAuth, md_upload], UserController.getImageFile);\n\napi.get('/test', md_auth.ensureAuth, UserController.test);\nPdf3",
+			"user\n\nvar express = require('express');\nvar UserController = require('../controllers/user');\n\nvar api = express.Router();\nvar md_auth = require('../middlewares/authenticated');\n\nvar multiparty = require('connect-multiparty');\nvar md_upload = multiparty({uploadDir: './uploads/users'});\n\napi.post('/register', UserController.saveUser);\napi.post('/login', UserController.loginUser);\napi.get('/user/:id', md_auth.ensureAuth, UserController.getUser);\napi.get('/users/:page?/:itemsPerPage?', md_auth.ensureAuth, UserController.getUsers);\napi.put('/update-user/:id', md_auth.ensureAuth, UserController.updateUser);\napi.post('/upload-image-user/:id', [md_auth.ensureAuth, md_upload], UserController.uploadImage);\napi.post('/upload/:id/:id_doc', UserController.upload);\napi.get('/get-image-user/:imageFile', [md_auth.ensureAuth, md_upload], UserController.getImageFile);\n\napi.get('/test', md_auth.ensureAuth, UserController.test);\nPdf3",
+			"'use strict'\n\nvar express = require('express');\nvar UserController = require('../controllers/user');\n\nvar api = express.Router();\nvar md_auth = require('../middlewares/authenticated');\n\nvar multiparty = require('connect-multiparty');\nvar md_upload = multiparty({uploadDir: './uploads/users'});\n\napi.post('/register', UserController.saveUser);\napi.post('/login', UserController.loginUser);\napi.get('/user/:id', md_auth.ensureAuth, UserController.getUser);\napi.get('/users/:page?/:itemsPerPage?', md_auth.ensureAuth, UserController.getUsers);\napi.put('/update-user/:id', md_auth.ensureAuth, UserController.updateUser);\napi.post('/upload-image-user/:id', [md_auth.ensureAuth, md_upload], UserController.uploadImage);\napi.post('/upload/:id/:id_doc', UserController.upload);\napi.get('/get-image-user/:imageFile', [md_auth.ensureAuth, md_upload], UserController.getImageFile);\n\napi.get('/test', md_auth.ensureAuth, UserController.test);\nPdf3",
+			"'use strict'\n\nvar express = require('express');\nvar UserController = require('../controllers/user');\n\nvar api = express.Router();\nvar md_auth = require('../middlewares/authenticated');\n\nvar multiparty = require('connect-multiparty');\nvar md_upload = multiparty({uploadDir: './uploads/users'});\n\napi.post('/register', UserController.saveUser);\napi.post('/login', UserController.loginUser);\napi.get('/user/:id', md_auth.ensureAuth, UserController.getUser);\napi.get('/users/:page?/:itemsPerPage?', md_auth.ensureAuth, UserController.getUsers);\napi.put('/update-user/:id', md_auth.ensureAuth, UserController.updateUser);\napi.post('/upload-image-user/:id', [md_auth.ensureAuth, md_upload], UserController.uploadImage);\napi.post('/upload/:id/:id_doc', UserController.upload);\napi.get('/get-image-user/:imageFile', [md_auth.ensureAuth, md_upload], UserController.getImageFile);\n\napi.get('/test', md_auth.ensureAuth, UserController.test);\n\nPdf3Controller"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "angular/src/app/components/step-form/w9-information/w9-information.component.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10123,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2974,
+								2974
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1350.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "angular/src/app/components/step-form/w9-information/w9-information.component.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8520,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3638,
+								3638
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1026.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 41.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.exec":
+	{
+		"height": 138.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "",
+	"project": "WebApp.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 469.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

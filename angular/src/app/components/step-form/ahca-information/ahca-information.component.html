@@ -1,0 +1,173 @@
+
+<mat-card class="card-step container ajustar aliniarizq" fxFlex>
+  
+
+  <mat-card-header class="top container ajustar">
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title class="card-title">AHCA INFORMATION {{posr}}</mat-card-title>
+    <mat-card-title class="text-normal">Plese fill this form</mat-card-title>
+    <mat-card-subtitle  class="text-normal"><span class="text-alert">Note: </span>Fields with an asterisk <span class="text-alert">(*)</span> are required</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-vertical-stepper class="container ajustar aliniarizq" [linear]=true #stepper>
+
+    <mat-step class="container ajustar" [stepControl]="ahcaFormGroup">
+      <form [formGroup]="ahcaFormGroup">
+        <ng-template matStepLabel>AFFIDAVIT OF COMPLIANCE WITH Background Screening Requirements</ng-template>
+			<div class="container ajustar">
+			<h2>Authority: This form may be used by all employees to comply with:</h2>
+			<ul>			
+			<li> The attestation requirements of section 435.05(2), Florida Statutes, which state that every employee
+			required to undergo Level 2 background screening must attest, subject to penalty of perjury, to meeting the
+			requirements for qualifying for employment pursuant to this chapter and agreeing to inform the employer
+			immediately if arrested for any of the disqualifying offenses while employed by the employer
+			</li>
+			<li>The proof of screening within the previous 5 years in section 408.809(2), Florida Statutes which requires
+			proof of compliance with level 2 screening standards submitted within the previous 5 years to meet any provider
+			or professional licensure requirements of the Agency, the Department of Health, the Agency for Persons with
+			Disabilities, the Department of Children and Family Services, or the Department of Financial Services for an
+			applicant for a certificate of authority or provisional certificate of authority to operate a continuing care
+			retirement community under chapter 651 if the person has not been unemployed for more than 90 days.
+			This form must be maintained in the employee's personnel file. If this form is used as proof of screening for an
+			administrator or chief financial officer to satisfy the requirements of an application for a health care provider
+			license, please attach a copy of the screening results and submit with the licensure application.
+			</li>
+			</ul>
+			
+			</div>
+			
+			
+			<div class="container ajustar">
+				<h1 class="desplazar">Employee/Contractor Name:</h1>
+                <hr width="100%" noshade="noshade" />
+					
+			 <mat-form-field class="field" fxFlex>
+				<input matInput type="given-name" placeholder="First name" formControlName="name" required>
+				<mat-error *ngIf="ahcaFormGroup.get('name').invalid">You must enter your name</mat-error>
+			  </mat-form-field>
+
+			  <mat-form-field class="field" fxFlex>
+				<input matInput type="additional-name" placeholder="MI" formControlName="mi" maxlength="1">
+			  </mat-form-field>
+
+			  <mat-form-field class="field" fxFlex>
+				<input matInput type="family-name" placeholder="Last Name" formControlName="last_name" required>
+				<mat-error *ngIf="ahcaFormGroup.get('last_name').invalid">You must enter your last name</mat-error>
+			  </mat-form-field>
+			  </div>
+			  <div class="container ajustar">
+			  <h1 class="desplazar">Address of Health Care Provider:</h1>
+              <hr width="100%" noshade="noshade" />
+			  
+			 <mat-form-field class="field">
+				<textarea matInput placeholder="Address" formControlName="address" required></textarea>
+				<mat-error *ngIf="ahcaFormGroup.get('address').invalid">You must enter address</mat-error>
+			 </mat-form-field>
+				  
+				  <mat-form-field class="field" fxFlex>
+					<input matInput placeholder="City" formControlName="city" required>
+			 		<mat-error *ngIf="ahcaFormGroup.get('city').invalid">You must enter city</mat-error>
+				  </mat-form-field>
+
+				  <mat-form-field class="field" fxFlex>
+					<input type="text" matInput placeholder="State" formControlName="state"  [matAutocomplete]="autoGroup" >
+					  <mat-autocomplete #autoGroup="matAutocomplete">
+						<mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+						  <mat-option *ngFor="let name of group.names" [value]="name">
+							{{name}}
+						  </mat-option>
+					  </mat-optgroup>
+					</mat-autocomplete>
+			 		<mat-error *ngIf="ahcaFormGroup.get('state').invalid">You must enter state</mat-error>
+				  </mat-form-field>
+
+			  <mat-form-field class="field" fxFlex>
+				<input matInput type="number" #zipCode1 maxlength="5" placeholder="ZIP Code" formControlName="zipcode" required>
+				<mat-hint align="end">{{zipCode1.value.length}} / 5</mat-hint>
+				<mat-error *ngIf="ahcaFormGroup.get('zipcode').invalid">You must enter zipcode</mat-error>
+			  </mat-form-field>
+			</div>
+        <div>          
+          <button mat-button matStepperNext color="primary">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step class="container ajustar aliniarizq" [stepControl]="evidencelevel2FormGroup">
+	<form [formGroup]="evidencelevel2FormGroup">
+        <ng-template matStepLabel>Provide evidence of prior Level 2 ...</ng-template>
+		<div>
+			<h3 >
+				<mat-checkbox  (change)="toggleVisibility($event)" formControlName="evidencelevel2" [(ngModel)]="evidencelevel2" [(checked)]="checked"></mat-checkbox> Check here if you are also using this form to provide evidence of prior Level 2 screening (fingerprinting) in	the last 5 years and have not been unemployed for more than 90 days, please provide the
+					following information. A copy of the prior screening results must be attached.
+              </h3>
+
+              
+			<div *ngIf="evidencelevel2">
+				<div class="container ajustar">
+				
+				 <mat-form-field class="field" fxFlex>
+					<input matInput type="given-name" placeholder="Purpose of Prior Screening *" formControlName="purpose" >
+					<mat-error *ngIf="evidencelevel2FormGroup.get('purpose').invalid">You must enter your purpose</mat-error>
+				  </mat-form-field>
+
+				  <mat-form-field class="field" fxFlex>
+					<input matInput  [min]="minDate" [max]="maxDate"  [matDatepicker]="date" formControlName="date" placeholder="Date of Prior Screening *"  (focus)="date.open()" (click)="date.open()" >
+					<mat-datepicker-toggle matPrefix [for]="date"></mat-datepicker-toggle>
+					<mat-datepicker touchUi #date></mat-datepicker>
+				  </mat-form-field>
+				</div>
+				<div class="container ajustar aliniarizq">
+					<h3>Screened conducted by:</h3>
+						<ul>
+							<li>
+							  <mat-checkbox  formControlName="agencyhealthcareadministration" [(ngModel)]="agencyhealthcareadministration" [(checked)]="checked">
+								  Agency for Health Care Administration
+							   </mat-checkbox>
+							</li>
+							<li>
+							   <mat-checkbox  formControlName="departmenthealth" [(ngModel)]="departmenthealth" [(checked)]="checked">
+								  Department of Health
+							   </mat-checkbox>
+							</li>
+							<li>
+							   <mat-checkbox  formControlName="agencypersonswithdisabilities" [(ngModel)]="agencypersonswithdisabilities" [(checked)]="checked">
+								  Agency for Persons with Disabilities
+							   </mat-checkbox>
+							</li>
+							<li>
+							   <mat-checkbox  formControlName="departmentchildrenfamilyservices" [(ngModel)]="departmentchildrenfamilyservices" [(checked)]="checked">
+								  Department of Children and Family Services
+							   </mat-checkbox>
+							</li>
+							<li>
+							   <mat-checkbox  formControlName="departmentfinancialservices" [(ngModel)]="departmentfinancialservices" [(checked)]="checked">
+								  Department of Financial Services
+							   </mat-checkbox>
+							</li>
+						</ul>
+				</div>
+			</div>
+	</div>		        
+      <div>
+        <button mat-button matStepperPrevious color="warn">Back</button>
+        <button mat-button matStepperNext color="primary">Next</button>       
+      </div>
+     </form>
+    </mat-step> 
+   
+    <mat-step class="container ajustar">
+      <ng-template matStepLabel>Save and Next</ng-template>
+      <p>
+        You are now done.<br><br>
+       <label class='red'>When you press save and next you will not be able to edit the information send.</label> 
+      </p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="onSubmit()">Save and Next</button>
+      </div>
+   
+    </mat-step>
+  
+  </mat-vertical-stepper>
+</mat-card>

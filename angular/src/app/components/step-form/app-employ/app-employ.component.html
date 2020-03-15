@@ -1,0 +1,215 @@
+
+<mat-card class="card-step" fxFlex>
+  
+
+  <mat-card-header class="top">
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title class="card-title">PERSONAL INFORMATION {{posr}} </mat-card-title>
+    <mat-card-title class="text-normal">Plese fill this form</mat-card-title>
+    <mat-card-subtitle  class="text-normal"><span class="text-alert">Note: </span>Fields with an asterisk <span class="text-alert">(*)</span> are required</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-vertical-stepper [linear]=true #stepper>
+    
+    <mat-step [stepControl]="piFormGroup">
+      <form [formGroup]="piFormGroup">
+        <ng-template matStepLabel>Basic Information</ng-template>
+
+        <div class="container">
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="given-name" placeholder="First name" formControlName="name" required>
+            <mat-error *ngIf="piFormGroup.get('name').invalid">You must enter your name</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="additional-name" placeholder="MI" formControlName="mi" maxlength="1">
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="family-name" placeholder="Last Name" formControlName="lastname" required>
+            <mat-error *ngIf="piFormGroup.get('lastname').invalid">You must enter your last name</mat-error>
+          </mat-form-field>
+          
+        </div>
+
+        <div class="container">
+          
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="bday" [min]="minDate" [max]="maxDate"  [matDatepicker]="picker" formControlName="birthday" placeholder="Date of birthday"  (focus)="picker.open()" (click)="picker.open()" required>
+            <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+            <mat-error *ngIf="piFormGroup.get('birthday').invalid">You must enter your Date of birthday</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <mat-select placeholder="Gender" formControlName="gender" required>
+              <mat-option *ngFor="let gender of genders" [value]="gender">
+                {{gender}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="piFormGroup.get('gender').invalid">You must enter your gender</mat-error>
+          </mat-form-field>
+
+        </div>
+                  
+        <div >
+          <button mat-button matStepperNext color="primary">Next</button>
+        </div>
+
+      </form>
+
+    </mat-step>
+
+    <mat-step [stepControl]="addressFormGroup">
+
+      <form [formGroup]="addressFormGroup">
+        <ng-template matStepLabel>Present Address</ng-template>
+
+        
+        <div class="container">
+
+          <mat-form-field class="field">
+            <textarea matInput placeholder="Address " formControlName="address" required></textarea>
+            <mat-error *ngIf="addressFormGroup.get('address').invalid">You must enter your address</mat-error>
+         </mat-form-field>
+          
+          <mat-form-field class="field" fxFlex>
+            <input matInput placeholder="City" formControlName="city" required>
+            <mat-error *ngIf="addressFormGroup.get('city').invalid">You must enter your city</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input type="text" matInput placeholder="State" formControlName="state" required [matAutocomplete]="autoGroup">
+              <mat-autocomplete #autoGroup="matAutocomplete">
+                <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                  <mat-option *ngFor="let name of group.names" [value]="name">
+                    {{name}}
+                  </mat-option>
+              </mat-optgroup>
+            </mat-autocomplete>
+            <mat-error *ngIf="addressFormGroup.get('state').invalid">You must enter your state</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input type="number" matInput  #zipCode1 maxlength="5" placeholder="ZIP Code" formControlName="zip_code" required>
+            <mat-hint  align="end">{{zipCode1.value.length}} / 5</mat-hint>
+            <mat-error *ngIf="addressFormGroup.get('zip_code').invalid">You must enter your zip code</mat-error>
+          </mat-form-field>
+
+        </div>
+      
+      <div>
+        
+      <mat-checkbox (change)="toggleVisibility($event)"  formControlName="otheraddress" [(ngModel)]="otheraddress">
+            Permanent address is diferent?
+      </mat-checkbox>
+       
+      </div>     
+  
+
+          <div class="container" *ngIf="otheraddress"> <!--    -->
+            
+
+          <mat-form-field class="field">
+          <textarea matInput placeholder="Address *" formControlName="address2" ></textarea>
+          <mat-error *ngIf="addressFormGroup.get('address2').invalid">You must enter your address</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field class="field" fxFlex>
+            <input matInput placeholder="City *" formControlName="city2" >
+            <mat-error *ngIf="addressFormGroup.get('city2').invalid">You must enter your city</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input type="text" matInput placeholder="State *" formControlName="state2"  [matAutocomplete]="autoGroup">
+              <mat-autocomplete #autoGroup="matAutocomplete">
+                <mat-optgroup *ngFor="let group of stateGroupOptions1 | async" [label]="group.letter">
+                  <mat-option *ngFor="let name of group.names" [value]="name">
+                    {{name}}
+                  </mat-option>
+              </mat-optgroup>
+            </mat-autocomplete>
+            <mat-error *ngIf="addressFormGroup.get('state2').invalid">You must enter your state</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="number" #zipCode2 maxlength="5"   placeholder="ZIP Code *" formControlName="zip_code2" >
+            <mat-hint align="end">{{zipCode2.value.length}} / 5</mat-hint>
+            <mat-error *ngIf="addressFormGroup.get('zip_code2').invalid">You must enter your zip code</mat-error>
+          </mat-form-field>
+
+        </div>
+
+        <div>
+          <button mat-button matStepperPrevious color="warn">Back</button>
+          <button mat-button  matStepperNext color="primary">Next  </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="contactInfFormGroup">
+      <form [formGroup]="contactInfFormGroup">
+        <ng-template matStepLabel>Contact information</ng-template>
+
+        <div class="container">
+          
+          <mat-form-field class="field" fxFlex>
+            <span matPrefix>+1 &nbsp;</span>
+            <input  matInput type="number"  maxlength="10"   placeholder="Phone" formControlName="phone"  required>
+            
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error *ngIf="contactInfFormGroup.get('phone').invalid">
+              You must enter your phone              
+            </mat-error>
+             <mat-hint align="end">{{(contactInfFormGroup.get('phone').value+"").length}} / 10</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <mat-icon matSuffix>email</mat-icon>
+            <input matInput type="email" placeholder="Email" formControlName="email" >
+            <mat-error *ngIf="contactInfFormGroup.get('email').invalid">{{getEmailErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+        </div>
+
+        <div>
+          <button mat-button matStepperPrevious color="warn">Back</button>
+          <button mat-button matStepperNext color="primary">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="socialSecurityNumber">
+      <form [formGroup]="socialSecurityNumber">
+        <ng-template matStepLabel>Social Security Number</ng-template>
+         <div class="container">
+            <mat-form-field>
+              <input matInput type="number" placeholder="Social security number"  maxlength="9" formControlName="socialSecurityNumber"required>
+              <mat-error *ngIf="socialSecurityNumber.get('socialSecurityNumber').invalid">You must enter your social security number</mat-error>
+              <mat-hint align="end">{{(socialSecurityNumber.get('socialSecurityNumber').value+"").length}} / 9</mat-hint>
+            </mat-form-field>
+
+        </div>
+        <div>
+          <button mat-button matStepperPrevious color="warn">Back</button>
+          <button mat-button matStepperNext color="primary">Next</button>
+        </div>
+     </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Save and Next</ng-template>
+      <p>
+        You are now done.<br><br>
+       <label class='red'>When you press save and next you will not be able to edit the information send.</label> 
+      </p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="onSubmit()">Save and Next</button>
+      </div>
+   
+    </mat-step>
+  
+  </mat-vertical-stepper>
+</mat-card>

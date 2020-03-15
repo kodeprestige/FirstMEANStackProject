@@ -1,0 +1,188 @@
+
+<mat-card class="card-step container ajustar aliniarizq" fxFlex>
+  
+
+  <mat-card-header class="top container ajustar">
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title class="card-title">W9 INFORMATION {{posr}}</mat-card-title>
+    <mat-card-title class="text-normal">Plese fill this form</mat-card-title>
+    <mat-card-subtitle  class="text-normal"><span class="text-alert">Note: </span>Fields with an asterisk <span class="text-alert">(*)</span> are required</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-vertical-stepper class="container ajustar aliniarizq" [linear]=true #stepper>
+  
+    <mat-step class="container ajustar aliniarizq" [stepControl]="w9FormGroup">
+      <form [formGroup]="w9FormGroup">
+        <ng-template matStepLabel>Form W-9</ng-template>
+			
+			
+			<div class="container ajustar">
+					
+					 
+					  	<div class="container ajustar">	
+						 <mat-form-field class="field" fxFlex>
+							<input matInput placeholder="Name (as shown on your income tax return)" formControlName="name" required>
+							<mat-error *ngIf="w9FormGroup.get('name').invalid">You must enter your name</mat-error>
+						  </mat-form-field>
+						</div>
+						  
+						<div class="container ajustar">
+						  <mat-form-field class="field" fxFlex>
+							<input matInput type="family-name" placeholder="Business name/disregarded entity name, if different from above" formControlName="business">
+							<mat-error *ngIf="w9FormGroup.get('business').invalid">You must enter your business</mat-error>
+						  </mat-form-field>
+						</div>
+					
+					  <div class="container ajustar">
+					  
+							 <mat-form-field class="field">
+								<textarea matInput placeholder="Address" formControlName="address" required></textarea>
+								<mat-error *ngIf="w9FormGroup.get('address').invalid">You must enter address</mat-error>
+							 </mat-form-field>
+								  
+								  <mat-form-field class="field" fxFlex>
+									<input matInput placeholder="City" formControlName="city" required>
+							 		<mat-error *ngIf="w9FormGroup.get('city').invalid">You must enter city</mat-error>
+								  </mat-form-field>
+
+								  <mat-form-field class="field" fxFlex>
+									<input type="text" matInput placeholder="State" formControlName="state"  [matAutocomplete]="autoGroup" requiered>
+									  <mat-autocomplete #autoGroup="matAutocomplete">
+										<mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+										  <mat-option *ngFor="let name of group.names" [value]="name">
+											{{name}}
+										  </mat-option>
+									  </mat-optgroup>
+									</mat-autocomplete>
+							 		<mat-error *ngIf="w9FormGroup.get('state').invalid">You must enter state</mat-error>
+								  </mat-form-field>
+
+							  <mat-form-field class="field" fxFlex>
+								<input matInput type="number" #zipCode2 maxlength="5" placeholder="ZIP Code" formControlName="zipcode" required>
+								<mat-hint align="end">{{zipCode2.value.length}} / 5</mat-hint>
+								<mat-error *ngIf="w9FormGroup.get('zipcode').invalid">You must enter zipcode</mat-error>
+							  </mat-form-field>
+					  </div>
+					  <div class="container ajustar">
+					  	<h2>List account number(s) here (optional)</h2>
+					  	<ul>
+					  		<li>
+							  	<mat-form-field class="field" fxFlex>
+									<input matInput type="number" placeholder="account" minlength="1" formControlName="listaccountnumber" [readonly]="cant > 1" >
+									<mat-error *ngIf="w9FormGroup.get('listaccountnumber').value > 0 &&  w9FormGroup.get('listaccountnumber').invalid">You must enter your list count number</mat-error>
+								 </mat-form-field>
+							  
+                              <button mat-button *ngIf="w9FormGroup.get('listaccountnumber').value > 0 && cant  == 1 && !w9FormGroup.get('listaccountnumber').invalid" color="warn" (click)="add()">Add<mat-icon>add</mat-icon></button>
+					  		</li>
+					  		<li *ngIf="cant  >= 2">
+							  	<mat-form-field class="field" fxFlex>
+									<input matInput type="number" placeholder="account" formControlName="listaccountnumber1" [readonly]="cant > 2">
+									<mat-error *ngIf="w9FormGroup.get('listaccountnumber1').value > 0 &&  w9FormGroup.get('listaccountnumber1').invalid">You must enter your list count number</mat-error>
+								 </mat-form-field>
+							  <button mat-button *ngIf="cant  == 2" color="warn" (click)="del()">Delete<mat-icon>clear</mat-icon></button> 
+                              <button mat-button *ngIf="w9FormGroup.get('listaccountnumber1').value > 0 && cant  == 2 && !w9FormGroup.get('listaccountnumber1').invalid" color="warn" (click)="add()">Add<mat-icon>add</mat-icon></button>
+					  		</li>
+					  		<li *ngIf="cant  >= 3">
+							  	<mat-form-field class="field" fxFlex>
+									<input matInput type="number" placeholder="account" formControlName="listaccountnumber2" >
+									<mat-error *ngIf="w9FormGroup.get('listaccountnumber2').invalid">You must enter your list count number</mat-error>
+								 </mat-form-field>
+							  <button mat-button *ngIf="cant  == 3" color="warn" (click)="del()">Delete<mat-icon>clear</mat-icon></button> 
+                             
+					  		</li>
+
+					  	</ul>
+						 
+					  </div>
+					  
+					  
+			
+			</div>
+			
+			
+			
+             <div class="container">
+              
+                   <mat-checkbox (change)="toggleVisibility3($event)" formControlName="exemptpayee" [(ngModel)]="exemptpayeev" >
+                    Exempt payee
+                   </mat-checkbox>
+              
+	               <div class=" aliniarizq" *ngIf="!exemptpayeev"> 
+			            	<hr width="50%" noshade="noshade" />
+			            <ul>
+			            	<li>
+			            		<div>
+			            		<mat-form-field >
+									<mat-select formControlName="tax" placeholder="Select appropriate value for federal tax classification:*"  >										
+										<mat-option [value]="1">Individual/sole proprietor</mat-option>
+										<mat-option [value]="2">C Corporation</mat-option>
+										<mat-option [value]="3">S Corporation</mat-option>
+										<mat-option [value]="4">Partnership</mat-option>
+										<mat-option [value]="5">Trust/estate</mat-option>
+									</mat-select>
+								</mat-form-field>
+								</div>
+			            	</li>
+			            	<li>
+			            		<div>
+			            		<mat-checkbox (change)="toggleVisibility2($event)" formControlName="limited" [(ngModel)]="limited" [(checked)]="checked">
+									 Limited liability company. Enter the tax classification :
+								</mat-checkbox>
+								<div *ngIf="limited" class="ajustar">						
+									<mat-form-field >
+								      <mat-select  [(ngModel)]="classification" formControlName="classification" placeholder="Value for federal tax classification:*"  >							                                 
+								        <mat-option [value]="1">C Corporation</mat-option>
+								        <mat-option [value]="2">S Corporation</mat-option>
+								        <mat-option [value]="3">Partnership</mat-option>                            
+								      </mat-select>
+								    </mat-form-field>
+								</div>
+								</div>		            	
+			            	</li>
+			            	<li>
+								<div>
+			            		<mat-checkbox (change)="toggleVisibility1($event)" formControlName="other" [(ngModel)]="other" [(checked)]="checked">
+									 Other
+								</mat-checkbox>
+								<div *ngIf="other" >	
+								<button mat-button color="warn" (click)="openDialog()"><mat-icon>launch</mat-icon><u>(click me for see instructions)</u></button>
+			            		<mat-form-field class="field" fxFlex>
+									<input matInput  placeholder="Other" formControlName="othert" >
+									<mat-error *ngIf="w9FormGroup.get('othert').invalid">You must enter your other</mat-error>
+								</mat-form-field>
+								</div>
+								</div>
+			            	</li>
+			            </ul>		
+					</div>	
+			</div>
+			
+			
+			 
+			 
+			 
+            <div>			  
+			  <button mat-button matStepperNext color="primary">Next</button>
+			</div>
+
+	  </form>
+
+	</mat-step>
+
+
+   
+    <mat-step class="container ajustar">
+      <ng-template matStepLabel>Save and Next</ng-template>
+     <p>
+        You are now done.<br><br>
+       <label class='red'>When you press save and next you will not be able to edit the information send.</label> 
+      </p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="onSubmit()">Save and Next</button>
+      </div>
+   
+    </mat-step>
+  
+  </mat-vertical-stepper>
+</mat-card>
