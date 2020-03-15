@@ -312,9 +312,10 @@
 	],
 	"file_history":
 	[
-		"/D/WebCesar/cesar-nodejs/api/controllers/user.js",
 		"/D/WebCesar/cesar-nodejs/api/routes/user.js",
 		"/D/WebCesar/cesar-nodejs/api/models/user.js",
+		"/D/WebCesar/cesar-nodejs/api/controllers/user.js",
+		"/D/WebCesar/cesar-nodejs/api/uploads/users/upload_028970417dd9e1b59c9af25843dfd048.pdf",
 		"/D/WebCesar/cesar-nodejs/api/uploads/users/upload_2d1e3392583ecfba9195d963efb5e854.pdf",
 		"/D/WebCesar/cesar-nodejs/api/uploads/users/upload_51fdfa73d133c6772f605dd6499bc2c6",
 		"/D/WebCesar/cesar-nodejs/api/app.js",

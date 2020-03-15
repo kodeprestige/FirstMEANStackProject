@@ -12,7 +12,6 @@ export class HomeComponent implements OnInit {
 		this.title = "Welcome to App Concepts in Eldercare"
 	}
 
-	ngOnInit(){
-		console.log('home.component loaded...');
-	}
+	ngOnInit(){}
+	
 }
