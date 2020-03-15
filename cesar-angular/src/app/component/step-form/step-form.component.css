@@ -1,8 +1,15 @@
 .card-step {
 	height: 90%;
 	width: 80%;
-	margin: 30px;
+	margin: 20px;
 	vertical-align: center;
+}
+
+.card-title {
+	color: black !important;
+	font-size: 2rem;
+	display: flex;
+	text-align: center;
 }
 
 .container {
@@ -18,7 +25,7 @@
 
 .field {
   width: 100%;
-  margin: .5rem;
+  margin: .8rem;
 }
 
 .hidden {

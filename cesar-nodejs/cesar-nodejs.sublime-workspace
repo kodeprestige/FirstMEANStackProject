@@ -4,8 +4,12 @@
 		"selected_items":
 		[
 			[
+				"t",
+				"toString"
+			],
+			[
 				"user",
-				"userId"
+				"user"
 			],
 			[
 				"sw",
@@ -267,24 +271,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "api/controllers/user.js",
-			"settings":
-			{
-				"buffer_size": 12340,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "api/controllers/pdffill.js",
-			"settings":
-			{
-				"buffer_size": 4747,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -325,14 +311,14 @@
 		"/D/WebCesar/cesar-nodejs",
 		"/D/WebCesar/cesar-nodejs/api",
 		"/D/WebCesar/cesar-nodejs/api/controllers",
-		"/D/WebCesar/cesar-nodejs/api/forms",
-		"/D/WebCesar/cesar-nodejs/api/forms/filled_forms"
+		"/D/WebCesar/cesar-nodejs/api/models"
 	],
 	"file_history":
 	[
-		"/D/WebCesar/cesar-nodejs/api/routes/user.js",
-		"/D/WebCesar/cesar-nodejs/api/models/user.js",
 		"/D/WebCesar/cesar-nodejs/api/controllers/user.js",
+		"/D/WebCesar/cesar-nodejs/api/models/user.js",
+		"/D/WebCesar/cesar-nodejs/api/controllers/pdffill.js",
+		"/D/WebCesar/cesar-nodejs/api/routes/user.js",
 		"/D/WebCesar/cesar-nodejs/api/uploads/users/upload_028970417dd9e1b59c9af25843dfd048.pdf",
 		"/D/WebCesar/cesar-nodejs/api/uploads/users/upload_2d1e3392583ecfba9195d963efb5e854.pdf",
 		"/D/WebCesar/cesar-nodejs/api/uploads/users/upload_51fdfa73d133c6772f605dd6499bc2c6",
@@ -393,7 +379,7 @@
 	],
 	"find":
 	{
-		"height": 41.0
+		"height": 29.0
 	},
 	"find_in_files":
 	{
@@ -453,66 +439,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "api/controllers/user.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12340,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9808,
-								9808
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 7245.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "api/controllers/pdffill.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4747,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4732,
-								14
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		}
 	],

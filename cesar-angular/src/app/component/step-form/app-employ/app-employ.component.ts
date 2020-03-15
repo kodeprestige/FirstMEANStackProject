@@ -3,29 +3,29 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 //User
-import { User } from '../../models/user'
-import { UserService } from '../../services/user.service';
+import { User } from '../../../models/user'
+import { UserService } from '../../../services/user.service';
 
 //Upload
-import { UploadService } from '../../services/upload.service';
+import { UploadService } from '../../../services/upload.service';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 //Controls
-import { Controls, MyErrorStateMatcher, StateUsControls, StateGroup } from '../components.utils/controls';
-import { UTILS } from '../components.utils/utils';
+import { Controls, MyErrorStateMatcher, StateUsControls, StateGroup } from '../../components.utils/controls';
+import { UTILS } from '../../components.utils/utils';
 
 
 @Component({
   selector: 'step-form',
-  templateUrl: 'step-form.component.html',
-  styleUrls: ['step-form.component.css'],
+  templateUrl: 'app-employ.component.html',
+  styleUrls: ['../step-form.component.css'],
   providers: [UserService, UploadService]
 })
 
-export class StepperComponent implements OnInit {
+export class AppEmployComponent implements OnInit {
 
   public user: User;
   public identity;
@@ -131,6 +131,9 @@ export class StepperComponent implements OnInit {
 
           localStorage.setItem('identity', JSON.stringify(this.user));
           this.identity = this.user;
+
+          //Go to My data
+          this._router.navigate(['/step-form']);
 
         } else {
           console.log(this.message = 'Try again.');

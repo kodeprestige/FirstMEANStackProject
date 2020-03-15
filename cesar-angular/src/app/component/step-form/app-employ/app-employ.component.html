@@ -4,6 +4,7 @@
 
   <mat-card-header class="top">
     <div mat-card-avatar class="header-image"></div>
+    <mat-card-title class="card-title">PERSONAL INFORMATION</mat-card-title>
     <mat-card-title class="text-normal">Plese fill this form</mat-card-title>
     <mat-card-subtitle  class="text-normal"><span class="text-alert">Note: </span>Fields with an asterisk <span class="text-alert">(*)</span> are required</mat-card-subtitle>
   </mat-card-header>
@@ -62,7 +63,7 @@
     <mat-step [stepControl]="addressFormGroup">
 
       <form [formGroup]="addressFormGroup">
-        <ng-template matStepLabel>Address</ng-template>
+        <ng-template matStepLabel>Present Address</ng-template>
 
         <mat-form-field class="field">
           <textarea matInput placeholder="Address" formControlName="address" required></textarea>
@@ -194,11 +195,11 @@
     </mat-step>
 
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
+      <ng-template matStepLabel>Save and Next</ng-template>
       You are now done.
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="onSubmit()">Done</button>
+        <button mat-button (click)="onSubmit()">Save and Next</button>
       </div>
     </mat-step>
   </mat-vertical-stepper>
