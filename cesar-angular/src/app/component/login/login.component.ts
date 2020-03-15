@@ -37,7 +37,6 @@ import {
 	//animations
 	encapsulation: ViewEncapsulation.None,
   	animations: [
-  	//Entry login
     	trigger('lightSpeedIn', [transition('* => *', useAnimation(lightSpeedIn))]),
     	trigger('rubberBand', [transition('* => *', useAnimation(rubberBand))]),
     	trigger('swing', [transition('* => *', useAnimation(swing))])
@@ -50,9 +49,9 @@ export class LoginComponent implements OnInit {
 	public user: User;
 	public identity;
 	public token;
-	public status: string;
 	public message: string;
 	public loginShow: string;
+	public incorrectLogin: boolean;
 
 	rubberBand = false;
 	swing = false;
@@ -67,8 +66,8 @@ export class LoginComponent implements OnInit {
 		this.user = new User ("", "", "", "", "", "", "ROLE_USER", "", "");
 
 		this.loginShow = "form";
-		this.status = "error";
 		this.message = 'Sorry. An internal error occurred.';
+		this.incorrectLogin = false;
 	}
 	
 	ngOnInit() {
@@ -99,7 +98,6 @@ export class LoginComponent implements OnInit {
 				let user = response.user;
 				this.identity = response.user;
 				if(user && (this.identity = user.identity) && this.identity._id && (this.token = user.token)) {
-					this.status = 'success';
 
 					console.log(this.identity);
 					console.log(this.token);
@@ -126,6 +124,8 @@ export class LoginComponent implements OnInit {
 					if(this.message != 'Nickname or Password you entered was incorrect.' && this.message != 'Email or Password you entered was incorrect.') {
 						console.log(this.message);
 						this.message = 'Sorry. An internal error occurred.';
+					} else {
+						this.incorrectLogin = true;
 					}
 				} else {
 					this.message = 'Sorry. An internal error occurred.';
@@ -154,7 +154,7 @@ export class LoginComponent implements OnInit {
 		try {
 			controls.forEach(control => {
 				console.log(i++);
-				if(flag = this.errorState.isErrorState(control, form)){
+				if(flag = this.errorState.isErrorState(control, form) || control.invalid){
 					console.log(flag);
 					console.log(control);
 					throw BreakException;

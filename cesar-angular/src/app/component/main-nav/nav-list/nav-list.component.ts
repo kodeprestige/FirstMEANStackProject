@@ -38,5 +38,3 @@ export class NavListComponent implements OnInit, DoCheck {
   }
 
 }
-
-}

@@ -7,6 +7,14 @@
 	    <mat-icon>contacts</mat-icon>
 	    About us
 	</a>
+	<a mat-list-item [routerLink]="['/register']" *ngIf="!identity">
+ 		<mat-icon>person_add</mat-icon>
+  		Sing Up
+	</a>
+	<a mat-list-item [routerLink]="['/user-edit']" *ngIf="identity">
+ 		<mat-icon>edit</mat-icon>
+  		Edit
+	</a>
  	<a mat-list-item [routerLink]="['/login']" *ngIf="!identity">
  		<mat-icon>account_circle</mat-icon>
   		Log In

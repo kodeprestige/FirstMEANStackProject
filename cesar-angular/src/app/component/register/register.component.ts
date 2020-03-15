@@ -24,8 +24,11 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import {
   lightSpeedIn,
+  rubberBand,
+  swing
 } from 'ng-animate';
 
+//State USA
 export interface StateGroup {
   letter: string;
   names: string[];
@@ -47,7 +50,9 @@ export const _filter = (opt: string[], value: string): string[] => {
 	//animations
 	encapsulation: ViewEncapsulation.None,
   	animations: [
-    	trigger('lightSpeedIn', [transition('* => *', useAnimation(lightSpeedIn))])
+    	trigger('lightSpeedIn', [transition('* => *', useAnimation(lightSpeedIn))]),
+    	trigger('rubberBand', [transition('* => *', useAnimation(rubberBand))]),
+    	trigger('swing', [transition('* => *', useAnimation(swing))])
   	]
 })
 
@@ -57,8 +62,12 @@ export class RegisterComponent implements OnInit {
 	public user: User;
 	public identity;
 	public token;
-	public status: string;
 	public message: string;
+	public loginShow: string;
+	public incorrectLogin: boolean;
+
+	rubberBand = false;
+	swing = false;
 
 	//State USA
 	stateForm: FormGroup = this.formBuilder.group({
@@ -76,6 +85,9 @@ export class RegisterComponent implements OnInit {
 	){
 		this.title = 'Welcome to Concepts in Eldercare for employees';
 		this.user = new User ("", "", "", "", "", "", "ROLE_USER", "", "");
+		this.loginShow = "form";
+		this.message = 'Sorry. An internal error occurred.';
+		this.incorrectLogin = false;
 	}
 
 	//State USA
@@ -103,13 +115,28 @@ export class RegisterComponent implements OnInit {
 		this.statesToFields();
 	}
 
+	email = new FormControl('', [Validators.required, Validators.email]);
+	password = new FormControl('', [Validators.required]);
+	errorState = new MyErrorStateMatcher();
+
 	onSubmit(loginForm) {
+
+		if (!this.isFormValid([this.email, this.password], loginForm)) {
+			//Incorrect login
+    		this.rubberBand = !this.rubberBand;
+			return;
+		}
+
+		this.loginShow = 'progress';
+		this.user.email = this.email.value;
+		this.user.password = this.password.value;
+		this.password.reset();
+
 		this._userService.singup(this.user, true).subscribe(
 			response => {
 				let user = response.user;
 				this.identity = response.user;
 				if(user && (this.identity = user.identity) && this.identity._id && (this.token = user.token)) {
-					this.status = 'success';
 
 					console.log(this.identity);
 					console.log(this.token);
@@ -125,12 +152,12 @@ export class RegisterComponent implements OnInit {
 					this._router.navigate(['/']);
 
 				} else {
-					this.status = 'error';
+					this.loginShow = 'alert';
 					this.message = 'Sorry. An internal error occurred. Try again later.';
 				}
 			},
 			err => {
-				this.status = 'error';
+				this.loginShow = 'alert';
 				console.log(err);
 
 				if(err && (this.message = err.error.message)) {
@@ -147,7 +174,31 @@ export class RegisterComponent implements OnInit {
 	}
 
 
-	email = new FormControl('', [Validators.required, Validators.email]);
+	isFormValid(controls: FormControl[], form: NgForm): boolean {
+		var flag = false;
+		var i = 0;
+
+
+		var BreakException = {};
+
+		try {
+			controls.forEach(control => {
+				console.log(i++);
+				if(flag = this.errorState.isErrorState(control, form) || control.invalid){
+					console.log(flag);
+					console.log(control);
+					throw BreakException;
+				}
+			});
+		} catch (e) {
+		  	if (e !== BreakException) throw e;
+		}
+
+		
+		console.log("2");
+		console.log(flag);
+		return !flag;
+	}
 
   	getErrorMessage() {
 	    return this.email.hasError('required') ? 'You must enter a value' :

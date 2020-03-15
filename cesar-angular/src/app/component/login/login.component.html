@@ -1,6 +1,4 @@
-<div>
-
-	<div class="content">	
+<div class="content">	
 	<mat-card class="card" 
 		[@swing]="swing"
 		[@rubberBand]="rubberBand"
@@ -26,7 +24,10 @@
 				<p> 
 					<button (click)="tryAgain()" mat-raised-button color="primary">Try again</button>
 				</p>
-				<p> 
+				<p *ngIf="incorrectLogin"> 
+					<button mat-stroked-button>Forgot password?</button>
+				</p>
+				<p *ngIf="!incorrectLogin"> 
 					If the error persists, please, <a href="http://conceptsineldercare.com/?page_id=103"> contact us </a>
 				</p>
 		  </mat-card-title>
@@ -35,6 +36,7 @@
 	  	<form #loginForm="ngForm" *ngIf="loginShow == 'form'">
 
 	  		<mat-form-field>
+	  			<mat-icon matSuffix>email</mat-icon>
 			    <input matInput type="email" placeholder="Enter your email" [formControl]="email" required>
 			    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
 			</mat-form-field>
@@ -48,18 +50,21 @@
 				<mat-error *ngIf="password.invalid">You must enter a value</mat-error>
 			</mat-form-field>
 
-			<p>Sing up</p>
-			<p>Forgot password?</p>
+			<p>
+				<button [routerLink]="['/register']" [routerLinkActive]="['active']" mat-button color="primary">
+					<mat-icon>person_add</mat-icon>
+					Sing up
+				</button>
+			</p>
+			<button mat-stroked-button color="warn">Forgot password?</button>
 
 			<mat-card-actions>
 			    <button (click)="onSubmit(loginForm)" value="Login" mat-raised-button class="card-btn" color="primary">
 			    	Log in
-				    <mat-icon>arrow_forward</mat-icon>
+				    <mat-icon>person</mat-icon>
 				</button>
 			</mat-card-actions> 
 		</form>
 
 	</mat-card>
-</div>
-
 </div>
