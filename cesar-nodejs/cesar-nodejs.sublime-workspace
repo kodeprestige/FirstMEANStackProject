@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"user",
+				"userId"
+			],
+			[
+				"sw",
+				"switch"
+			],
+			[
 				"pa",
 				"params"
 			],
@@ -54,10 +62,6 @@
 			[
 				"md",
 				"md_upload"
-			],
-			[
-				"user",
-				"users"
 			],
 			[
 				"v",
@@ -263,6 +267,24 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "api/controllers/user.js",
+			"settings":
+			{
+				"buffer_size": 12340,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "api/controllers/pdffill.js",
+			"settings":
+			{
+				"buffer_size": 4747,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -303,12 +325,8 @@
 		"/D/WebCesar/cesar-nodejs",
 		"/D/WebCesar/cesar-nodejs/api",
 		"/D/WebCesar/cesar-nodejs/api/controllers",
-		"/D/WebCesar/cesar-nodejs/api/middlewares",
-		"/D/WebCesar/cesar-nodejs/api/models",
-		"/D/WebCesar/cesar-nodejs/api/routes",
-		"/D/WebCesar/cesar-nodejs/api/services",
-		"/D/WebCesar/cesar-nodejs/api/uploads",
-		"/D/WebCesar/cesar-nodejs/api/uploads/users"
+		"/D/WebCesar/cesar-nodejs/api/forms",
+		"/D/WebCesar/cesar-nodejs/api/forms/filled_forms"
 	],
 	"file_history":
 	[
@@ -375,7 +393,7 @@
 	],
 	"find":
 	{
-		"height": 29.0
+		"height": 41.0
 	},
 	"find_in_files":
 	{
@@ -390,6 +408,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"test",
 			"con",
 			".then",
 			"console",
@@ -434,8 +453,66 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "api/controllers/user.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12340,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9808,
+								9808
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7245.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "api/controllers/pdffill.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4747,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4732,
+								14
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],

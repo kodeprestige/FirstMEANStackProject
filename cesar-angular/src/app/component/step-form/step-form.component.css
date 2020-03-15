@@ -1,11 +1,7 @@
-.alert {
-	color: red;
-}
-
 .card-step {
 	height: 90%;
 	width: 80%;
-	margin: 20px;
+	margin: 30px;
 	vertical-align: center;
 }
 
@@ -31,5 +27,16 @@
 
 .disabledDiv {
   	pointer-events: none;
+}
+
+.text-alert {
+	color: red;
+}
+
+.text-normal {
+	color: blue !important;
+}
+.top {
+	margin-top: 40px !important; 
 }
 

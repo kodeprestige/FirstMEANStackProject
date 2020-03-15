@@ -1,205 +1,205 @@
 
 <mat-card class="card-step" fxFlex>
-  <!--<h2></h2>
-
-  <mat-card-header>
-    <div mat-card-avatar class="header-image"></div>
-    <mat-card-title  class="normal">Plese fill this forom</mat-card-title>
-    <mat-card-subtitle  class="normal"><span class="alert">Note: </span>Fields with an asterisk <span class="alert">(*)</span> are required</mat-card-subtitle>
-  </mat-card-header>-->
-
-<mat-vertical-stepper [linear]=false #stepper>
   
-  <mat-step [stepControl]="piFormGroup">
-    <form [formGroup]="piFormGroup">
-      <ng-template matStepLabel>Basic Information</ng-template>
 
-      <div class="container">
+  <mat-card-header class="top">
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title class="text-normal">Plese fill this form</mat-card-title>
+    <mat-card-subtitle  class="text-normal"><span class="text-alert">Note: </span>Fields with an asterisk <span class="text-alert">(*)</span> are required</mat-card-subtitle>
+  </mat-card-header>
 
-        <mat-form-field class="field" fxFlex>
-          <input matInput type="given-name" placeholder="First name" formControlName="name" required>
-          <mat-error *ngIf="piFormGroup.get('name').invalid">You must enter your name</mat-error>
+  <mat-vertical-stepper [linear]=false #stepper>
+    
+    <mat-step [stepControl]="piFormGroup">
+      <form [formGroup]="piFormGroup">
+        <ng-template matStepLabel>Basic Information</ng-template>
+
+        <div class="container">
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="given-name" placeholder="First name" formControlName="name" required>
+            <mat-error *ngIf="piFormGroup.get('name').invalid">You must enter your name</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="additional-name" placeholder="MI" formControlName="mi" maxlength="1">
+            <mat-error *ngIf="piFormGroup.get('mi').invalid">You must enter your name</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="family-name" placeholder="Last Name" formControlName="lastname" required>
+            <mat-error *ngIf="piFormGroup.get('lastname').invalid">You must enter your name</mat-error>
+          </mat-form-field>
+          
+        </div>
+
+        <div class="container">
+          
+          <mat-form-field class="field" fxFlex>
+            <input matInput type="bday" [min]="minDate" [max]="maxDate"  [matDatepicker]="picker" formControlName="birthday" placeholder="Date of birthday"  (focus)="picker.open()" (click)="picker.open()" required>
+            <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="field" fxFlex>
+            <mat-select placeholder="Gender" formControlName="gender" required>
+              <mat-option *ngFor="let gender of genders" [value]="gender">
+                {{gender}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+                  
+        <div>
+          <button mat-button matStepperNext color="primary">Next</button>
+        </div>
+
+      </form>
+
+    </mat-step>
+
+    <mat-step [stepControl]="addressFormGroup">
+
+      <form [formGroup]="addressFormGroup">
+        <ng-template matStepLabel>Address</ng-template>
+
+        <mat-form-field class="field">
+          <textarea matInput placeholder="Address" formControlName="address" required></textarea>
+          <mat-error *ngIf="addressFormGroup.get('address').invalid">You must enter your name</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="field" fxFlex>
-          <input matInput type="additional-name" placeholder="MI" formControlName="mi" maxlength="1">
-          <mat-error *ngIf="piFormGroup.get('mi').invalid">You must enter your name</mat-error>
+        <mat-form-field class="field">
+          <textarea matInput placeholder="Address 2" formControlName="address2"></textarea>
         </mat-form-field>
 
-        <mat-form-field class="field" fxFlex>
-          <input matInput type="family-name" placeholder="Last Name" formControlName="lastname" required>
-          <mat-error *ngIf="piFormGroup.get('lastname').invalid">You must enter your name</mat-error>
-        </mat-form-field>
-        
-      </div>
+        <div class="container">
+          
+          <mat-form-field class="field" fxFlex>
+            <input matInput placeholder="City" formControlName="city" required>
+          </mat-form-field>
 
-      <div class="container">
-        
-        <mat-form-field class="field" fxFlex>
-          <input matInput type="bday" [min]="minDate" [max]="maxDate"  [matDatepicker]="picker" formControlName="birthday" placeholder="Date of birthday"  (focus)="picker.open()" (click)="picker.open()" required>
-          <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker touchUi #picker></mat-datepicker>
-        </mat-form-field>
+          <mat-form-field class="field" fxFlex>
+            <input type="text" matInput placeholder="State" formControlName="state" required [matAutocomplete]="autoGroup">
+              <mat-autocomplete #autoGroup="matAutocomplete">
+                <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                  <mat-option *ngFor="let name of group.names" [value]="name">
+                    {{name}}
+                  </mat-option>
+              </mat-optgroup>
+            </mat-autocomplete>
+          </mat-form-field>
 
-        <mat-form-field class="field" fxFlex>
-          <mat-select placeholder="Gender" formControlName="gender" required>
-            <mat-option *ngFor="let gender of genders" [value]="gender">
-              {{gender}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+          <mat-form-field class="field" fxFlex>
+            <input matInput #zipCode maxlength="5" placeholder="ZIP Code" formControlName="zip_code" required>
+            <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+          </mat-form-field>
 
-      </div>
-                
-      <div>
-        <button mat-button matStepperNext color="primary">Next</button>
-      </div>
+        </div>
 
-    </form>
+        <div>
+          <button mat-button matStepperPrevious color="warn">Back</button>
+          <button mat-button matStepperNext color="primary">Next</button>
+        </div>
+      </form>
+    </mat-step>
 
-  </mat-step>
+    <mat-step [stepControl]="contactInfFormGroup">
+      <form [formGroup]="contactInfFormGroup">
+        <ng-template matStepLabel>Contact information</ng-template>
 
-  <mat-step [stepControl]="addressFormGroup">
+        <div class="container">
+          
+          <mat-form-field class="field" fxFlex>
+            <span matPrefix>+1 &nbsp;</span>
+            <input type="tel-national" matInput placeholder="Phone" formControlName="phone"  required>
+            <mat-icon matSuffix>phone</mat-icon>
+          </mat-form-field>
 
-    <form [formGroup]="addressFormGroup">
-      <ng-template matStepLabel>Address</ng-template>
+          <mat-form-field class="field" fxFlex>
+            <mat-icon matSuffix>email</mat-icon>
+            <input matInput type="email" placeholder="Email" formControlName="email" required>
+            <mat-error *ngIf="contactInfFormGroup.get('email').invalid">{{getEmailErrorMessage()}}</mat-error>
+          </mat-form-field>
 
-      <mat-form-field class="field">
-        <textarea matInput placeholder="Address" formControlName="address" required></textarea>
-        <mat-error *ngIf="addressFormGroup.get('address').invalid">You must enter your name</mat-error>
-      </mat-form-field>
+        </div>
 
-      <mat-form-field class="field">
-        <textarea matInput placeholder="Address 2" formControlName="address2"></textarea>
-      </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious color="warn">Back</button>
+          <button mat-button matStepperNext color="primary">Next</button>
+        </div>
+      </form>
+    </mat-step>
 
-      <div class="container">
-        
-        <mat-form-field class="field" fxFlex>
-          <input matInput placeholder="City" formControlName="city" required>
-        </mat-form-field>
+    <mat-step [stepControl]="applyForFormGroup">
+      <form [formGroup]="applyForFormGroup">
+        <ng-template matStepLabel>Apply for ...</ng-template>
 
-        <mat-form-field class="field" fxFlex>
-          <input type="text" matInput placeholder="State" formControlName="state" required [matAutocomplete]="autoGroup">
-            <mat-autocomplete #autoGroup="matAutocomplete">
-              <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
-                <mat-option *ngFor="let name of group.names" [value]="name">
-                  {{name}}
-                </mat-option>
-            </mat-optgroup>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Choose specialty" formControlName="speciality" required [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let speciality of filteredSpecialties | async" [value]="speciality">
+                {{speciality}}
+              </mat-option>
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field class="field" fxFlex>
-          <input matInput #zipCode maxlength="5" placeholder="ZIP Code" formControlName="zip_code" required>
-          <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
-        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious color="warn">Back</button>
+          <button mat-button matStepperNext color="primary">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="uploadFormGroup">
+      <div>
+        <ng-template matStepLabel>Upload Files</ng-template>
+
+        <input type="file" accept="application/pdf" #file style="display: none" (change)="onFileAdded()" />
+
+        <div *ngFor="let doc of docs">
+        <div class="container">
+
+              <mat-form-field class="field disabledDiv" fxFlex>
+                <input matInput placeholder={{doc.name}} [value]="(doc.file)? doc.file.name: ''">
+                <mat-icon matSuffix *ngIf="uploadSuccessful || uploading">check</mat-icon>
+              </mat-form-field>
+
+              <mat-progress-spinner
+                  *ngIf="progress"
+                  color="primary"
+                  mode="determinate"
+                  [value]="progress[doc.name].progress | async"
+                  diameter="40" >
+              </mat-progress-spinner>
+              
+              <button *ngIf="!progress" mat-mini-fab color="primary" (click)="addFile(doc)">
+                <mat-icon *ngIf="!doc.file">add</mat-icon>
+                <mat-icon *ngIf="doc.file">edit</mat-icon>
+              </button>
+
+        </div>
+      </div>
 
       </div>
 
       <div>
         <button mat-button matStepperPrevious color="warn">Back</button>
-        <button mat-button matStepperNext color="primary">Next</button>
+        <button mat-button *ngIf="uploadSuccessful || uploading" [disabled]="uploading" matStepperNext color="primary">Next</button>
+        <button mat-raised-button *ngIf="!(uploadSuccessful || uploading)" [disabled]="!isComplete" color="primary" (click)="upLoad()">
+          Upload all files
+        </button>
       </div>
-    </form>
-  </mat-step>
+      
+    </mat-step>
 
-  <mat-step [stepControl]="contactInfFormGroup">
-    <form [formGroup]="contactInfFormGroup">
-      <ng-template matStepLabel>Contact information</ng-template>
-
-      <div class="container">
-        
-        <mat-form-field class="field" fxFlex>
-          <span matPrefix>+1 &nbsp;</span>
-          <input type="tel-national" matInput placeholder="Phone" formControlName="phone"  required>
-          <mat-icon matSuffix>phone</mat-icon>
-        </mat-form-field>
-
-        <mat-form-field class="field" fxFlex>
-          <mat-icon matSuffix>email</mat-icon>
-          <input matInput type="email" placeholder="Email" formControlName="email" required>
-          <mat-error *ngIf="contactInfFormGroup.get('email').invalid">{{getEmailErrorMessage()}}</mat-error>
-        </mat-form-field>
-
-      </div>
-
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
       <div>
-        <button mat-button matStepperPrevious color="warn">Back</button>
-        <button mat-button matStepperNext color="primary">Next</button>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="onSubmit()">Done</button>
       </div>
-    </form>
-  </mat-step>
-
-  <mat-step [stepControl]="applyForFormGroup">
-    <form [formGroup]="applyForFormGroup">
-      <ng-template matStepLabel>Apply for ...</ng-template>
-
-      <mat-form-field>
-        <input type="text" matInput placeholder="Choose specialty" formControlName="speciality" required [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let speciality of filteredSpecialties | async" [value]="speciality">
-              {{speciality}}
-            </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-
-      <div>
-        <button mat-button matStepperPrevious color="warn">Back</button>
-        <button mat-button matStepperNext color="primary">Next</button>
-      </div>
-    </form>
-  </mat-step>
-
-  <mat-step [stepControl]="uploadFormGroup">
-    <div>
-      <ng-template matStepLabel>Upload Files</ng-template>
-
-      <input type="file" accept="application/pdf" #file style="display: none" (change)="onFileAdded()" />
-
-      <div *ngFor="let doc of docs">
-      <div class="container">
-
-            <mat-form-field class="field disabledDiv" fxFlex>
-              <input matInput placeholder={{doc.name}} [value]="(doc.file)? doc.file.name: ''">
-              <mat-icon matSuffix *ngIf="uploadSuccessful || uploading">check</mat-icon>
-            </mat-form-field>
-
-            <mat-progress-spinner
-                *ngIf="progress"
-                color="primary"
-                mode="determinate"
-                [value]="progress[doc.name].progress | async"
-                diameter="40" >
-            </mat-progress-spinner>
-            
-            <button *ngIf="!progress" mat-mini-fab color="primary" (click)="addFile(doc)">
-              <mat-icon *ngIf="!doc.file">add</mat-icon>
-              <mat-icon *ngIf="doc.file">edit</mat-icon>
-            </button>
-
-      </div>
-    </div>
-
-    </div>
-
-    <div>
-      <button mat-button matStepperPrevious color="warn">Back</button>
-      <button mat-button *ngIf="uploadSuccessful || uploading" [disabled]="uploading" matStepperNext color="primary">Next</button>
-      <button mat-raised-button *ngIf="!(uploadSuccessful || uploading)" [disabled]="!isComplete" color="primary" (click)="upLoad()">
-        Upload all files
-      </button>
-    </div>
-    
-  </mat-step>
-
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    You are now done.
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="onSubmit()">Done</button>
-    </div>
-  </mat-step>
-</mat-vertical-stepper>
+    </mat-step>
+  </mat-vertical-stepper>
 </mat-card>
