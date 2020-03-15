@@ -10,11 +10,22 @@
 }
 
 .content {
-	max-width: 40%;
 	min-width: 20rem;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	margin-left: 20px;
 	margin-right: 20px;
 	text-align: center;
+}
+
+.qr_background {
+	background: #22a7f0;
+}
+
+.qr_textcolor {
+	color: pink;
+}
+
+.example_card_text {
+	max-width: 40%;
 }

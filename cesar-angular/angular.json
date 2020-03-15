@@ -20,6 +20,7 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
+              "src/qr_contact.png",
               "src/assets"
             ],
             "styles": [
@@ -79,6 +80,7 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
+              "src/qr_contact.png",
               "src/assets"
             ]
           }

@@ -25,7 +25,8 @@ import { trigger, transition, useAnimation } from '@angular/animations';
 import {
   lightSpeedIn,
   rubberBand,
-  swing
+  swing,
+  flipInY,
 } from 'ng-animate';
 
 @Component({
@@ -39,7 +40,8 @@ import {
   	animations: [
     	trigger('lightSpeedIn', [transition('* => *', useAnimation(lightSpeedIn))]),
     	trigger('rubberBand', [transition('* => *', useAnimation(rubberBand))]),
-    	trigger('swing', [transition('* => *', useAnimation(swing))])
+    	trigger('swing', [transition('* => *', useAnimation(swing))]),
+    	trigger('flipInY', [transition('* => *', useAnimation(flipInY))])
   	]
 })
 

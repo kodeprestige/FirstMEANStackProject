@@ -1,10 +1,11 @@
 <div class="container">
+
 	<div class="content">		
 	<!--efects-->
 	<mat-card class="card" 
 		[@swing]="swing"
 		[@rubberBand]="rubberBand"
-		[@lightSpeedIn]="{ value: lightSpeedIn, params: { timing: 0.6 } }" >
+		[@flipInY]="flipInY">
 
 		<!--header-->
 		<mat-card class="card-header">
@@ -38,7 +39,7 @@
 		</mat-card>
 
 		<!--Form-->
-	  	<form #loginForm="ngForm" *ngIf="loginShow == 'form'" (keyup.enter)="onSubmit(loginForm)" class="content1">
+	  	<form #loginForm="ngForm" *ngIf="loginShow == 'form'" (keyup.enter)="onSubmit(loginForm)">
 
 	  		<!--Email-->
 	  		<mat-form-field>
@@ -97,40 +98,77 @@
 </div>
 
 <div class="content">
-	<h1 class="title" color="primary">To <span><a href="http://conceptsineldercare.com/?page_id=103"> contact us </a></span>scan or click on image</h1>
-	<a href="http://conceptsineldercare.com/?page_id=2" target="_blnak">
-	    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt3la-G_OSyxupeQ6cZwky7wOHuRaKvEX4x0MSPCuGV3OVsQLBBQ">
-	</a>
+		<mat-card class="card qr_background"
+			[@lightSpeedIn]="{ value: lightSpeedIn, params: { timing: 0.6 } }">
+			
+			<mat-card class="card-header">
+			    <mat-card-title class="title">To <a class="qr_textcolor" href="http://conceptsineldercare.com/?page_id=103"> contact us </a></mat-card-title>
+			    <mat-card-title class="title">scan or click on image.</mat-card-title>
+			</mat-card>
+
+			<a href="http://conceptsineldercare.com/?page_id=2" target="_blnak">
+			    <img type="image/png" src="qr_contact.png">
+			</a>
+
+		</mat-card>
+	</div>
+
+<div class="content example_card_text">
+	<mat-card>
+		<h1>This is an example</h1>
+		<h2>This is an example too. This is an example too. This is an example too. This is an example too. This is an example too.</h2>
+		<h3>This is an example too. This is an example too.</h3>
+	</mat-card>
+</div>
+
+<div class="content example_card_text">
+	<mat-card>
+		<h1>This is an example</h1>
+		<h2>This is an example too. This is an example too. This is an example too. This is an example too. This is an example too.</h2>
+		<h3>This is an example too. This is an example too.</h3>
+	</mat-card>
+</div>
+
+<div class="content example_card_text">
+	<mat-card>
+		<h1>This is an example</h1>
+		<h2>This is an example too. This is an example too. This is an example too. This is an example too. This is an example too.</h2>
+		<h3>This is an example too. This is an example too.</h3>
+	</mat-card>
+</div>
+
+<div class="content example_card_text">
+	<mat-card>
+		<h1>This is an example</h1>
+		<h2>This is an example too. This is an example too. This is an example too. This is an example too. This is an example too.</h2>
+		<h3>This is an example too. This is an example too.</h3>
+	</mat-card>
 </div>
 
 <div class="content">
-	<h1 class="title" color="primary">To ,jvhchvmvkhvhrsr bvmhvh</h1>
-	<h2>jkg Szmfhgc,j.hv,jb vhvhvjyf hfjhvmbkj fgAhgchm</h2>
-	<h3>jkhbkjbjb hfhjv kjghgn jgugj Ajhbj,m</h3>
+	<mat-card>
+		<h1>This is an example</h1>
+		<h2>This is an example too. This is an example too. This is an example too. This is an example too. This is an example too.</h2>
+		<h3>This is an example too. This is an example too.</h3>
+	</mat-card>
 </div>
 
-<div class="content">
-	<h1 class="title" color="primary">To ,jvhchvmvkhvhrsr bvmhvh</h1>
-	<h2>jkg Szmfhgc,j.hv,jb vhvhvjyf hfjhvmbkj fgAhgchm</h2>
-	<h3>jkhbkjbjb hfhjv kjghgn jgugj Ajhbj,m</h3>
+<div class="content example_card_text">
+	<mat-card>
+		<h1>This is an example</h1>
+		<h2>This is an example too. This is an example too. This is an example too. This is an example too. This is an example too.</h2>
+		<h3>This is an example too. This is an example too.</h3>
+	</mat-card>
 </div>
 
-<div class="content">
-	<h1 class="title" color="primary">To ,jvhchvmvkhvhrsr bvmhvh</h1>
-	<h2>jkg Szmfhgc,j.hv,jb vhvhvjyf hfjhvmbkj fgAhgchm</h2>
-	<h3>jkhbkjbjb hfhjv kjghgn jgugj Ajhbj,m</h3>
+<div class="content example_card_text">
+	<mat-card>
+		<h1>This is an example</h1>
+		<h2>This is an example too. This is an example too. This is an example too. This is an example too. This is an example too.</h2>
+		<h3>This is an example too. This is an example too.</h3>
+	</mat-card>
 </div>
 
-<div class="content">
-	<h1 class="title" color="primary">To ,jvhchvmvkhvhrsr bvmhvh</h1>
-	<h2>jkg Szmfhgc,j.hv,jb vhvhvjyf hfjhvmbkj fgAhgchm</h2>
-	<h3>jkhbkjbjb hfhjv kjghgn jgugj Ajhbj,m</h3>
-</div>
 
-<div class="content">
-	<h1 class="title" color="primary">To ,jvhchvmvkhvhrsr bvmhvh</h1>
-	<h2>jkg Szmfhgc,j.hv,jb vhvhvjyf hfjhvmbkj fgAhgchm</h2>
-	<h3>jkhbkjbjb hfhjv kjghgn jgugj Ajhbj,m</h3>
-</div>
 
 </div>
